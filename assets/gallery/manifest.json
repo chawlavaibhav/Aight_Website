@@ -1,0 +1,168 @@
+{
+  "_note": "Single source of truth for the gallery. voices[] drives the hero voice sampler (provenance-quiet). cases[] drives the §Proof blind→reveal gallery. Case 4 (sign-in-motion) is gated:true until the video files land in videos/ — flip gated to false once wan_chai-sign.mp4 + the razor-sharp Devanagari overlay comp exist. Copy strings (task/verdict/convert) are data so Ezra/Maya can tune without touching code. No ₹, no SAVE badge, no routing verb — house rules.",
+  "voices": [
+    {
+      "model": "Priya",
+      "file": "voices/sarvam-priya.wav",
+      "script": "नमस्ते! आपका ऑर्डर कन्फर्म हो गया है — टोटल ₹1,250, और डिलीवरी कल शाम तक। धन्यवाद!",
+      "recorded": "2026-07-24",
+      "duration_s": 8
+    },
+    {
+      "model": "Kavya",
+      "file": "voices/sarvam-kavya.wav",
+      "script": "नमस्ते! आपका ऑर्डर कन्फर्म हो गया है — टोटल ₹1,250, और डिलीवरी कल शाम तक। धन्यवाद!",
+      "recorded": "2026-07-24",
+      "duration_s": 8
+    },
+    {
+      "model": "Ishita",
+      "file": "voices/sarvam-ishita.wav",
+      "script": "नमस्ते! आपका ऑर्डर कन्फर्म हो गया है — टोटल ₹1,250, और डिलीवरी कल शाम तक। धन्यवाद!",
+      "recorded": "2026-07-24",
+      "duration_s": 8
+    }
+  ],
+  "cases": [
+    {
+      "id": "chai-sign",
+      "index": "01",
+      "modality": "image",
+      "type": "divergence",
+      "hero": true,
+      "kicker": "The sign",
+      "task": "An Indian ad frame with a Hindi headline.",
+      "input": {
+        "label": "The brief",
+        "text": "A dawn chai stall, steam rising — the board should read सुबह की पहली चाय (“the first tea of the morning”)."
+      },
+      "candidates": [
+        {
+          "file": "images/nano_chai-headline.webp",
+          "mechanism": "a base model",
+          "aspect": "16 / 9",
+          "outcome": "win",
+          "tag": "The one worth sending",
+          "note": "Reads सुबह की पहली चाय — letter-perfect."
+        },
+        {
+          "file": "images/seedream_chai-headline.webp",
+          "mechanism": "another base model",
+          "aspect": "16 / 9",
+          "outcome": "loss",
+          "tag": "Reads as gibberish",
+          "note": "Gorgeous scene — but the Devanagari is nonsense."
+        }
+      ],
+      "verdict": "One board reads सुबह की पहली चाय, letter-perfect. One reads gibberish dressed up as Hindi. Both look the part — only one is safe to put in front of a customer.",
+      "convert": "If you picked the prettier frame, so would most people — that’s the trap. It got the Hindi wrong. Beautiful doesn’t matter if the words don’t; the one worth sending is the one your customer can actually read.",
+      "recorded": "2026-07-24"
+    },
+    {
+      "id": "mumbai",
+      "index": "02",
+      "modality": "image",
+      "type": "parity",
+      "hero": false,
+      "kicker": "The street",
+      "task": "Which one actually looks like India?",
+      "input": {
+        "label": "The brief",
+        "text": "A crowded Mumbai local at rush hour in the monsoon — humid window light, commuters packed close, candid documentary photograph."
+      },
+      "candidates": [
+        {
+          "file": "images/nano_mumbai.webp",
+          "mechanism": "a base model",
+          "aspect": "16 / 9",
+          "outcome": "good",
+          "tag": "Nails India"
+        },
+        {
+          "file": "images/seedream_mumbai.webp",
+          "mechanism": "another base model",
+          "aspect": "16 / 9",
+          "outcome": "good",
+          "tag": "Nails India · the one worth sending",
+          "cost": {
+            "ratio": "~4× less compute",
+            "source": "list prices, captured Jul 2026"
+          }
+        }
+      ],
+      "verdict": "No loser here — both are unmistakably India. When two outputs are this close, the one worth sending is the one that costs less to make.",
+      "recorded": "2026-07-24"
+    },
+    {
+      "id": "voice-order",
+      "index": "03",
+      "modality": "audio",
+      "type": "divergence",
+      "hero": false,
+      "kicker": "The confirmation",
+      "task": "An order-confirmation line, read out to a customer.",
+      "input": {
+        "label": "The script",
+        "text": "नमस्ते! आपका ऑर्डर कन्फर्म हो गया है — टोटल ₹1,250, और डिलीवरी कल शाम तक। धन्यवाद!"
+      },
+      "candidates": [
+        {
+          "file": "voices/sarvam-priya.wav",
+          "mechanism": "a base voice model",
+          "duration_s": 8,
+          "outcome": "verify"
+        },
+        {
+          "file": "voices/elevenlabs-sarahmaturereassuringconfident.mp3",
+          "mechanism": "another base voice model",
+          "duration_s": 7,
+          "outcome": "verify"
+        }
+      ],
+      "verdict": "[VERIFY by ear — which one flows the Hinglish code-switch and reads ₹1,250 the Indian way? One voice is India-tuned, one is a global voice. Confirm the winner before this line ships; do not crown by sight.]",
+      "verify": true,
+      "extras": {
+        "label": "Hear more voices on the same line",
+        "items": [
+          { "model": "Kavya", "file": "voices/sarvam-kavya.wav", "duration_s": 8 },
+          { "model": "Ishita", "file": "voices/sarvam-ishita.wav", "duration_s": 8 },
+          { "model": "Aditya", "file": "voices/sarvam-aditya.wav", "duration_s": 8 }
+        ]
+      },
+      "recorded": "2026-07-24"
+    },
+    {
+      "id": "sign-in-motion",
+      "index": "04",
+      "modality": "video",
+      "type": "composite",
+      "hero": false,
+      "gated": false,
+      "kicker": "The sign, in motion",
+      "task": "The same headline — now moving.",
+      "input": {
+        "label": "The brief",
+        "text": "A busy tea stall at dawn, slow push-in, steam rising — the signboard reads सुबह की पहली चाय."
+      },
+      "candidates": [
+        {
+          "file": "videos/wan_chai-sign.mp4",
+          "mechanism": "a base model",
+          "aspect": "16 / 9",
+          "outcome": "loss",
+          "tag": "Gets the Hindi wrong",
+          "note": "Beautiful scene — but the sign reads सुवह की पहली चाथ, misspelled."
+        }
+      ],
+      "aight": {
+        "file": "videos/aight_chai-composite.mp4",
+        "aspect": "16 / 9",
+        "label": "What Aight assembles",
+        "mechanism": "scene generated, headline composited on top",
+        "tag": "Razor-sharp, every frame"
+      },
+      "verdict": "A base model paints the sign into the scene — and gets the Hindi wrong (it wrote सुवह, not सुबह). Aight generates the scene clean and composites the headline as its own layer — so सुबह की पहली चाय stays razor-sharp and correct on every frame. Text is a layer, not a gamble.",
+      "recorded": "2026-07-24"
+    }
+  ]
+}
