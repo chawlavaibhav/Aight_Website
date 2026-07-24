@@ -816,6 +816,30 @@ p a:hover,
   border-radius: var(--r-panel);
   padding: 32px;
 }
+/* hero image preview — leads with images (preview on sight) instead of the voice card */
+.hero-shots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0 4px;
+}
+.hero-shot { margin: 0; }
+.hero-shot-frame {
+  overflow: hidden;
+  border: var(--hair-w) solid var(--hairline);
+  border-radius: var(--r-input);
+  background: var(--paper);
+  aspect-ratio: 16 / 9;
+}
+.hero-shot-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 560px) {
+  .hero-shots { grid-template-columns: 1fr; }
+}
 @media (max-width: 767px) {
   .facts-panel,
   .sampler-panel {
@@ -2049,7 +2073,7 @@ p a:hover,
             <!-- GALLERY-DELTA (Part 2 item 2): hero sub flips Variant A -> Variant B on manifest.
                  Variant B = "...India-first voice models &mdash; hear them on Indian work, prepaid in rupees, one domestic GST invoice." -->
             <p class="hero-sub rv" data-d="1" data-hero-sub>
-              GPT, Claude, Gemini, and India-first voice models &mdash; prepaid in rupees, one
+              GPT, Claude, Gemini, and India-first voice models. Prepaid in rupees, one
               domestic GST invoice.
             </p>
             <!-- GALLERY-DELTA (Part 2 items 3 + 10): CTAs flip to "Compare models" (filled, -> #proof)
@@ -2072,9 +2096,9 @@ p a:hover,
                 <span class="mono eyebrow-panel">What you get</span>
               </div>
               <ul class="facts-list">
-                <li><span class="fact-no mono">01</span><span>Text, voice and image &mdash; the models Indian teams actually run</span></li>
+                <li><span class="fact-no mono">01</span><span>Text, voice and image: the models Indian teams actually run</span></li>
                 <li><span class="fact-no mono">02</span><span>A prepaid rupee wallet with hard caps</span></li>
-                <li><span class="fact-no mono">03</span><span>Set up, tuned and supported &mdash; hands-on, throughout</span></li>
+                <li><span class="fact-no mono">03</span><span>Set up, tuned and supported. Hands-on, throughout</span></li>
               </ul>
             </div>
           </aside>
@@ -2159,16 +2183,16 @@ p a:hover,
             <p class="eyebrow ticked mono rv"><span class="tick" aria-hidden="true"></span><span class="eb-label">02 / The shelf</span></p>
             <h2 id="h-shelf" class="rv" data-d="1">What&rsquo;s on the counter.</h2>
             <p class="body-lead rv" data-d="2">
-              Text, voice and image &mdash; the models Indian teams actually run, in one place.
+              Text, voice and image: the models Indian teams actually run, in one place.
             </p>
             <ul class="ledger rv" data-d="3">
               <li>
                 <span class="lg-key">Text</span>
-                <span class="lg-val">GPT &middot; Claude &middot; Gemini.<br />Llama and open models <span class="lg-sub">&mdash; from suppliers we&rsquo;ve checked.</span></span>
+                <span class="lg-val">GPT &middot; Claude &middot; Gemini.<br />Llama and open models<span class="lg-sub">, from suppliers we&rsquo;ve checked.</span></span>
               </li>
               <li>
                 <span class="lg-key">Voice</span>
-                <span class="lg-val">Sarvam &middot; Smallest &middot; ElevenLabs <span class="lg-sub">&mdash; Indian languages first.</span></span>
+                <span class="lg-val">Sarvam &middot; Smallest &middot; ElevenLabs<span class="lg-sub">, Indian languages first.</span></span>
               </li>
               <li>
                 <span class="lg-key">Image</span>
@@ -2180,7 +2204,7 @@ p a:hover,
             <p class="body-lead shelf-note rv" data-d="3">
               An open model is not one thing. &ldquo;Llama 70B&rdquo; can mean a dozen different
               builds, depending on who serves it and how. So we buy open models from suppliers we
-              have checked ourselves &mdash; more than one, where it matters.
+              have checked ourselves. More than one, where it matters.
             </p>
           </div>
         </div>
@@ -2193,7 +2217,7 @@ p a:hover,
             <p class="eyebrow ticked mono rv"><span class="tick" aria-hidden="true"></span><span class="eb-label">03 / Workflows</span></p>
             <h2 id="h-workflows" class="rv" data-d="1">Whole workflows, not loose parts.</h2>
             <p class="body-lead rv" data-d="2">
-              A voice agent isn&rsquo;t one model. It&rsquo;s ears, a brain and a mouth &mdash;
+              A voice agent isn&rsquo;t one model. It&rsquo;s ears, a brain and a mouth:
               speech-in, reasoning, speech-out, wired to your phone line. Most teams buy the parts
               from four vendors and stitch them at the joints. We assemble the chain with you and run
               it as one piece. One chain, one vendor, one bill.
@@ -2229,8 +2253,8 @@ p a:hover,
             <p class="eyebrow ticked mono rv"><span class="tick" aria-hidden="true"></span><span class="eb-label">04 / Proof</span></p>
             <h2 id="h-proof" class="rv" data-d="1">See it before you buy it.</h2>
             <p class="body-lead rv" data-d="2">
-              The same Indian brief, run through the models we carry. Two outputs, unlabelled &mdash;
-              pick the one you&rsquo;d send a customer, then see which is which. Then run your own
+              The same Indian brief, run through the models we carry. Two outputs, unlabelled.
+              Pick the one you&rsquo;d send a customer, then see which is which. Then run your own
               prompt on prepaid credits.
             </p>
             <p class="mono anno rv" data-d="3">// real outputs, captured and dated.</p>
@@ -2252,11 +2276,11 @@ p a:hover,
             <ol class="ledger steps rv" data-d="2">
               <li>
                 <span class="lg-key mono">01</span>
-                <span class="lg-val"><b>Load a prepaid wallet in rupees.</b> No minimum &mdash; start with what suits you.</span>
+                <span class="lg-val"><b>Load a prepaid wallet in rupees.</b> No minimum. Start with what suits you.</span>
               </li>
               <li>
                 <span class="lg-key mono">02</span>
-                <span class="lg-val"><b>We set up your account and access &mdash; or build the workflow with you.</b></span>
+                <span class="lg-val"><b>We set up your account and access, or build the workflow with you.</b></span>
               </li>
               <li>
                 <span class="lg-key mono">03</span>
@@ -2266,7 +2290,7 @@ p a:hover,
                 <span class="lg-key mono">04</span>
                 <!-- STAGE DIRECTION (Part 4 item 6): CA sign-off required on this exact advance-then-consumption
                      wording before it goes live. Advance-received-against-services has GST time-of-supply nuance. -->
-                <span class="lg-val"><b>One tax invoice at month-end, on what you actually used.</b> Your top-up sits as an advance until you spend it &mdash; the invoice follows consumption, not the recharge. Caps and visibility the whole way.</span>
+                <span class="lg-val"><b>One tax invoice at month-end, on what you actually used.</b> Your top-up sits as an advance until you spend it. The invoice follows consumption, not the recharge. Caps and visibility the whole way.</span>
               </li>
             </ol>
           </div>
@@ -2293,7 +2317,7 @@ p a:hover,
             <h2 id="h-cost" class="rv" data-d="1">Spend you can see. Rupees that behave.</h2>
             <p class="body-lead rv" data-d="2">Caps per team. Live visibility. A prepaid wallet spend can&rsquo;t exceed.</p>
             <p class="body-lead rv" data-d="3">
-              And the India part: the models are excellent &mdash; buying them here is the mess. Five
+              And the India part: the models are excellent. Buying them here is the mess. Five
               foreign dashboards, forex fees, reverse-charge GST. Aight is one place, one domestic GST
               invoice, filed without ceremony.
             </p>
@@ -2332,11 +2356,11 @@ p a:hover,
               The big platforms save their account managers for their biggest logos. The small shops
               hand you a key and leave you to wire the stack yourself. We do both: a manager who knows
               your account, and a team that builds the workflow with you and stays on after it ships.
-              When something breaks, you reach a founder &mdash; not a ticket queue.
+              When something breaks, you reach a founder. Not a ticket queue.
             </p>
             <!-- CONFIG: wa.me / phone number (Part 4 item 3). Placeholder href until supplied. -->
             <p class="body-lead rv" data-d="3">
-              Message us on <a href="#" data-wa-link>WhatsApp</a>, or call &mdash; a founder replies.
+              Message us on <a href="#" data-wa-link>WhatsApp</a>, or call. A founder replies.
             </p>
           </div>
         </div>
@@ -2351,7 +2375,7 @@ p a:hover,
                sentence on manifest. Handled by applyGalleryDeltas(). -->
           <p class="close-body rv" data-d="1" data-close-body>
             The wallet holds rupees. The invoice is domestic. When something breaks, you reach a
-            founder. Bring last month&rsquo;s bill &mdash; we&rsquo;ll go through it line by line.
+            founder. Bring last month&rsquo;s bill. We&rsquo;ll go through it line by line.
           </p>
           <!-- GALLERY-DELTA (Part 2 item 3): CTAs flip to "Compare models" (filled, -> #proof)
                / "Talk to us" (ghost). Handled by applyGalleryDeltas(). -->
@@ -2371,8 +2395,8 @@ p a:hover,
               <!-- GALLERY-DELTA (Part 2 item 8): the second path mounts above the form on manifest —
                    "Compare models — no meeting required." / "Bring last month's bill — 30-minute review." -->
               <div class="form-secondpath rv" data-form-secondpath hidden>
-                <p><b>Compare models</b> &mdash; no meeting required.</p>
-                <p><b>Bring last month&rsquo;s bill</b> &mdash; 30-minute review.</p>
+                <p><b>Compare models</b>: no meeting required.</p>
+                <p><b>Bring last month&rsquo;s bill</b>: 30-minute review.</p>
               </div>
               <div class="form-grid">
                 <div class="field">
@@ -2400,7 +2424,7 @@ p a:hover,
                 <label for="f-building">What are you building?</label>
                 <textarea id="f-building" name="building" rows="4" required></textarea>
               </div>
-              <p class="form-hint">Already spending on AI? Mention it &mdash; bring last month&rsquo;s bill to the call.</p>
+              <p class="form-hint">Already spending on AI? Mention it. Bring last month&rsquo;s bill to the call.</p>
               <div class="form-actions">
                 <button class="btn btn-primary" type="submit">Send</button>
                 <!-- CONFIG: CAL_URL — Calendly (Part 4 item 1). Button stays hidden until CAL_URL is set below. -->
@@ -2693,27 +2717,63 @@ function createVoiceRow(voice) {
   return row;
 }
 
-/* ---- hero: swap facts panel for the voice sampler when recordings exist.
+/* ---- hero: swap the facts panel for an image preview when the gallery loads.
+        Images preview on sight; voice needs a click. So the hero leads with the
+        two-model comparison frame, and the voice sampler lives on as gallery
+        case 03. Provenance-quiet: no brand names, just two takes on one brief.
         The artifact slot height is reserved in CSS, so the swap does not shift. */
-function buildHeroSampler(manifest) {
+function buildHeroShots(manifest) {
   const mount = document.querySelector("[data-hero-artifact]");
-  if (!mount || !manifest || !manifest.voices.length) return;
+  if (!mount || !manifest || !Array.isArray(manifest.cases)) return;
+
+  // Single source: the hero-flagged image case (the chai comparison). Needs two
+  // candidates with files — the same brief rendered two ways, read at a glance.
+  const heroCase = manifest.cases.find(
+    (c) =>
+      c &&
+      c.hero &&
+      c.modality === "image" &&
+      Array.isArray(c.candidates) &&
+      c.candidates.filter((x) => x && x.file).length >= 2
+  );
+  if (!heroCase) return; // no usable image case → keep the facts panel
+
+  const shots = heroCase.candidates.filter((x) => x && x.file).slice(0, 2);
 
   const panel = document.createElement("div");
-  panel.className = "sampler-panel";
+  panel.className = "sampler-panel hero-shots-panel";
 
   const topline = document.createElement("div");
   topline.className = "panel-topline";
   const label = document.createElement("span");
   label.className = "mono eyebrow-panel";
-  label.textContent = "The gallery — real recordings, dated";
+  label.textContent = "The gallery. Same brief, two models";
   topline.appendChild(label);
   panel.appendChild(topline);
 
-  const rows = document.createElement("div");
-  rows.className = "sampler-rows";
-  manifest.voices.slice(0, 3).forEach((v) => rows.appendChild(createVoiceRow(v)));
-  panel.appendChild(rows);
+  const grid = document.createElement("div");
+  grid.className = "hero-shots";
+  let built = 0;
+  shots.forEach((s) => {
+    const fig = document.createElement("figure");
+    fig.className = "hero-shot";
+    const frame = document.createElement("div");
+    frame.className = "hero-shot-frame";
+    if (s.aspect) frame.style.aspectRatio = s.aspect;
+    const img = new Image();
+    img.src = GALLERY_BASE + s.file;
+    img.loading = "eager"; // hero: preview on sight, no lazy gate
+    img.decoding = "async";
+    img.alt = heroCase.task || "Sample frame";
+    // honesty guard: a frame that fails to load removes itself.
+    img.addEventListener("error", () => fig.remove());
+    frame.appendChild(img);
+    fig.appendChild(frame);
+    grid.appendChild(fig);
+    built += 1;
+  });
+  if (!built) return; // nothing loadable → leave the facts panel in place
+  panel.appendChild(grid);
 
   const more = document.createElement("a");
   more.className = "sampler-more mono";
@@ -2722,7 +2782,7 @@ function buildHeroSampler(manifest) {
   panel.appendChild(more);
 
   mount.innerHTML = "";
-  mount.setAttribute("aria-label", "Voice sampler — real recordings from the gallery");
+  mount.setAttribute("aria-label", "Gallery preview: the same brief rendered by two models");
   mount.appendChild(panel);
 }
 
@@ -2783,9 +2843,12 @@ function buildCandidateCell(cand, c, letter, isAight) {
     const v = document.createElement("video");
     v.src = GALLERY_BASE + cand.file;
     v.controls = true;
-    v.preload = "none";
+    // preload metadata (not the full clip) + a poster frame so the cell shows a
+    // real still, never a black rectangle, before play.
+    v.preload = "metadata";
+    if (cand.poster) v.poster = GALLERY_BASE + cand.poster;
     v.playsInline = true;
-    v.setAttribute("aria-label", (isAight ? "Aight — " : "") + (c.task || "clip"));
+    v.setAttribute("aria-label", (isAight ? "Aight: " : "") + (c.task || "clip"));
     v.addEventListener("error", () => cell.remove());
     media.appendChild(v);
     if (isAight && cand.overlay) {
@@ -2935,7 +2998,7 @@ function renderCase(c) {
   const hint = document.createElement("span");
   hint.className = "case-hint";
   hint.textContent =
-    c.modality === "image" ? "Tap the one you’d send — or just reveal." : "Listen, then reveal.";
+    c.modality === "image" ? "Tap the one you’d send, or just reveal." : "Listen, then reveal.";
   actions.appendChild(revealBtn);
   actions.appendChild(hint);
   plate.appendChild(actions);
@@ -2984,7 +3047,7 @@ function renderCase(c) {
   const testBtn = document.createElement("button");
   testBtn.type = "button";
   testBtn.className = "case-testself";
-  testBtn.textContent = "Test yourself — hide the answer";
+  testBtn.textContent = "Test yourself: hide the answer";
   if (canTest) plate.appendChild(testBtn);
 
   // ---- state machine ----
@@ -3088,7 +3151,7 @@ function applyGalleryDeltas(manifest) {
   const heroSub = document.querySelector("[data-hero-sub]");
   if (heroSub) {
     heroSub.textContent =
-      "GPT, Claude, Gemini, and India-first voice models — hear them on Indian work, prepaid in rupees, one domestic GST invoice.";
+      "GPT, Claude, Gemini, and India-first voice models. Hear them on Indian work, prepaid in rupees, one domestic GST invoice.";
   }
 
   // Item 3 + 10 — hero CTAs flip: Compare models (filled, → Proof) / Talk to us (ghost).
@@ -3111,13 +3174,13 @@ function applyGalleryDeltas(manifest) {
   const closeBody = document.querySelector("[data-close-body]");
   if (closeBody) {
     closeBody.textContent =
-      "The wallet holds rupees. The invoice is domestic. The gallery plays. When something breaks, you reach a founder. Bring last month’s bill — we’ll go through it line by line.";
+      "The wallet holds rupees. The invoice is domestic. The gallery plays. When something breaks, you reach a founder. Bring last month’s bill. We’ll go through it line by line.";
   }
 
   // Item 7 — shelf image row regains the listening reference (provenance stays gray).
   const shelfImage = document.querySelector("[data-shelf-image]");
   if (shelfImage) {
-    shelfImage.textContent = "A curated set — sampled side-by-side in the gallery.";
+    shelfImage.textContent = "A curated set, sampled side-by-side in the gallery.";
   }
 
   // Item 8 — form gains the second path above the fields.
@@ -3130,7 +3193,7 @@ function applyGalleryDeltas(manifest) {
 
 loadManifest().then((manifest) => {
   applyGalleryDeltas(manifest);
-  buildHeroSampler(manifest);
+  buildHeroShots(manifest);
   buildCases(manifest);
 });
 
@@ -3162,7 +3225,7 @@ if (form) {
     // DEV STATE — LAUNCH BLOCKER: FORM_ENDPOINT is not set, so nothing is
     // submitted. Set FORM_ENDPOINT at the top of this file before launch.
     if (!FORM_ENDPOINT) {
-      showNote("Form not yet connected — email vaibhav@getaight.ai");
+      showNote("Form not yet connected. Email vaibhav@getaight.ai");
       return;
     }
 
@@ -3176,12 +3239,12 @@ if (form) {
       });
       if (res.ok) {
         form.reset();
-        showNote("Got it — a founder will be in touch.");
+        showNote("Got it. A founder will be in touch.");
       } else {
-        showNote("Something went wrong — please email vaibhav@getaight.ai");
+        showNote("Something went wrong. Please email vaibhav@getaight.ai");
       }
     } catch {
-      showNote("Something went wrong — please email vaibhav@getaight.ai");
+      showNote("Something went wrong. Please email vaibhav@getaight.ai");
     } finally {
       if (submitBtn) submitBtn.disabled = false;
     }

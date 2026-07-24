@@ -34,7 +34,7 @@
       "task": "An Indian ad frame with a Hindi headline.",
       "input": {
         "label": "The brief",
-        "text": "A dawn chai stall, steam rising — the board should read सुबह की पहली चाय (“the first tea of the morning”)."
+        "text": "A dawn chai stall, steam rising. The board should read सुबह की पहली चाय (“the first tea of the morning”)."
       },
       "candidates": [
         {
@@ -43,7 +43,7 @@
           "aspect": "16 / 9",
           "outcome": "win",
           "tag": "The one worth sending",
-          "note": "Reads सुबह की पहली चाय — letter-perfect."
+          "note": "Reads सुबह की पहली चाय. Letter-perfect."
         },
         {
           "file": "images/seedream_chai-headline.webp",
@@ -51,11 +51,11 @@
           "aspect": "16 / 9",
           "outcome": "loss",
           "tag": "Reads as gibberish",
-          "note": "Gorgeous scene — but the Devanagari is nonsense."
+          "note": "Gorgeous scene, but the Devanagari is nonsense."
         }
       ],
-      "verdict": "One board reads सुबह की पहली चाय, letter-perfect. One reads gibberish dressed up as Hindi. Both look the part — only one is safe to put in front of a customer.",
-      "convert": "If you picked the prettier frame, so would most people — that’s the trap. It got the Hindi wrong. Beautiful doesn’t matter if the words don’t; the one worth sending is the one your customer can actually read.",
+      "verdict": "One board reads सुबह की पहली चाय, letter-perfect. One reads gibberish dressed up as Hindi. Both look the part. Only one is safe to put in front of a customer.",
+      "convert": "If you picked the prettier frame, so would most people. That’s the trap. It got the Hindi wrong. Beautiful doesn’t matter if the words don’t; the one worth sending is the one your customer can actually read.",
       "recorded": "2026-07-24"
     },
     {
@@ -68,7 +68,7 @@
       "task": "Which one actually looks like India?",
       "input": {
         "label": "The brief",
-        "text": "A crowded Mumbai local at rush hour in the monsoon — humid window light, commuters packed close, candid documentary photograph."
+        "text": "A crowded Mumbai local at rush hour in the monsoon: humid window light, commuters packed close, candid documentary photograph."
       },
       "candidates": [
         {
@@ -90,7 +90,7 @@
           }
         }
       ],
-      "verdict": "No loser here — both are unmistakably India. When two outputs are this close, the one worth sending is the one that costs less to make.",
+      "verdict": "No loser here. Both are unmistakably India. When two outputs are this close, the one worth sending is the one that costs less to make.",
       "recorded": "2026-07-24"
     },
     {
@@ -119,7 +119,7 @@
           "outcome": "verify"
         }
       ],
-      "verdict": "[VERIFY by ear — which one flows the Hinglish code-switch and reads ₹1,250 the Indian way? One voice is India-tuned, one is a global voice. Confirm the winner before this line ships; do not crown by sight.]",
+      "verdict": "[VERIFY by ear: which one flows the Hinglish code-switch and reads ₹1,250 the Indian way? One voice is India-tuned, one is a global voice. Confirm the winner before this line ships; do not crown by sight.]",
       "verify": true,
       "extras": {
         "label": "Hear more voices on the same line",
@@ -139,29 +139,31 @@
       "hero": false,
       "gated": false,
       "kicker": "The sign, in motion",
-      "task": "The same headline — now moving.",
+      "task": "The same headline, now moving.",
       "input": {
         "label": "The brief",
-        "text": "A busy tea stall at dawn, slow push-in, steam rising — the signboard reads सुबह की पहली चाय."
+        "text": "A busy tea stall at dawn, slow push-in, steam rising. The signboard reads सुबह की पहली चाय."
       },
       "candidates": [
         {
           "file": "videos/wan_chai-sign.mp4",
+          "poster": "videos/wan_chai-sign.poster.webp",
           "mechanism": "a base model",
           "aspect": "16 / 9",
           "outcome": "loss",
           "tag": "Gets the Hindi wrong",
-          "note": "Beautiful scene — but the sign reads सुवह की पहली चाथ, misspelled."
+          "note": "Beautiful scene, but the sign reads सुवह की पहली चाथ, misspelled."
         }
       ],
       "aight": {
         "file": "videos/aight_chai-composite.mp4",
+        "poster": "videos/aight_chai-composite.poster.webp",
         "aspect": "16 / 9",
         "label": "What Aight assembles",
         "mechanism": "scene generated, headline composited on top",
         "tag": "Razor-sharp, every frame"
       },
-      "verdict": "A base model paints the sign into the scene — and gets the Hindi wrong (it wrote सुवह, not सुबह). Aight generates the scene clean and composites the headline as its own layer — so सुबह की पहली चाय stays razor-sharp and correct on every frame. Text is a layer, not a gamble.",
+      "verdict": "A base model paints the sign into the scene, and gets the Hindi wrong (it wrote सुवह, not सुबह). Aight generates the scene clean and composites the headline as its own layer, so सुबह की पहली चाय stays razor-sharp and correct on every frame. Text is a layer, not a gamble.",
       "recorded": "2026-07-24"
     }
   ]
