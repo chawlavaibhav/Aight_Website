@@ -3,27 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aight | Where Indian businesses buy AI</title>
+    <title>Aight — Where Indian businesses buy AI</title>
+    <link rel="canonical" href="https://getaight.ai/" />
     <meta
       name="description"
-      content="GPT, Claude, Gemini, and India-first voice models — prepaid in rupees, one domestic GST invoice. Aight is where Indian businesses buy AI."
+      content="Use GPT, Claude, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aight" />
-    <meta property="og:title" content="Aight | Where Indian businesses buy AI" />
+    <meta property="og:title" content="Aight — Where Indian businesses buy AI" />
     <meta
       property="og:description"
-      content="GPT, Claude, Gemini, and India-first voice models — prepaid in rupees, one domestic GST invoice."
+      content="Use GPT, Claude, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
     />
     <meta property="og:url" content="https://getaight.ai/" />
     <meta property="og:image" content="https://getaight.ai/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Aight | Where Indian businesses buy AI" />
+    <meta name="twitter:title" content="Aight — Where Indian businesses buy AI" />
     <meta
       name="twitter:description"
-      content="GPT, Claude, Gemini, and India-first voice models — prepaid in rupees, one domestic GST invoice."
+      content="Use GPT, Claude, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
     />
     <meta name="twitter:image" content="https://getaight.ai/og-image.png" />
     <link
@@ -391,7 +392,7 @@ h2 + .body-lead {
   font-family: var(--font-serif);
   font-weight: 600;
   font-optical-sizing: auto;
-  font-size: clamp(2.5rem, 1.6rem + 4.2vw, 4.25rem);
+  font-size: clamp(2rem, 1.4rem + 3vw, 3.25rem);
   line-height: 1.06;
   letter-spacing: -0.015em;
   color: var(--ink);
@@ -783,7 +784,7 @@ p a:hover,
   padding-bottom: var(--section-y);
 }
 .hero-grid {
-  align-items: center;
+  align-items: start;
   row-gap: 48px;
 }
 .hero-sub {
@@ -816,30 +817,16 @@ p a:hover,
   border-radius: var(--r-panel);
   padding: 32px;
 }
-/* hero image preview — leads with images (preview on sight) instead of the voice card */
-.hero-shots {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 14px 0 4px;
-}
+/* hero image preview — stacked, full-bleed, with the divergence captions */
+.hero-artifact { min-height: 640px; } /* reserve so the async manifest swap doesn't jump (CLS) */
+.sampler-panel.hero-shots-panel { padding: 0; overflow: hidden; }
+.hero-shots-panel .panel-topline { padding: 16px 20px; margin: 0; border-bottom: var(--hair-w) solid var(--hairline); }
+.hero-shots { display: grid; grid-template-columns: 1fr; gap: 1px; margin: 0; background: var(--hairline); }
 .hero-shot { margin: 0; }
-.hero-shot-frame {
-  overflow: hidden;
-  border: var(--hair-w) solid var(--hairline);
-  border-radius: var(--r-input);
-  background: var(--paper);
-  aspect-ratio: 16 / 9;
-}
-.hero-shot-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-@media (max-width: 560px) {
-  .hero-shots { grid-template-columns: 1fr; }
-}
+.hero-shot-frame { border: 0; border-radius: 0; aspect-ratio: 16 / 9; overflow: hidden; }
+.hero-shot-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-shot figcaption { padding: 10px 20px 14px; font-family: var(--font-mono); font-size: var(--text-mono); line-height: 1.5; color: var(--ink-soft); background: var(--paper-raised); }
+.hero-shots-panel .sampler-more { display: block; margin: 0; padding: 14px 20px 18px; border-top: var(--hair-w) solid var(--hairline); }
 @media (max-width: 767px) {
   .facts-panel,
   .sampler-panel {
@@ -1800,8 +1787,13 @@ p a:hover,
 }
 .form-actions {
   display: flex;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+.form-actions-sep {
+  color: var(--ink-soft);
+  font-size: var(--text-mono);
 }
 .form-note {
   margin-top: 16px;
@@ -2044,7 +2036,7 @@ p a:hover,
         <a class="wordmark" href="index.html" aria-label="Aight — home">Aight<span class="stop">.</span></a>
         <div class="nav-links" id="nav-links" data-nav-links>
           <!-- GALLERY-DELTA (Part 2 item 1): nav "Gallery" link mounts on manifest. Hidden in no-gallery state. -->
-          <a href="#proof" data-gallery-nav hidden>Gallery</a>
+          <a href="#proof" data-gallery-nav hidden>Compare models</a>
           <a href="#in-production">Customers</a>
           <a href="#talk">Contact</a>
         </div>
@@ -2073,8 +2065,8 @@ p a:hover,
             <!-- GALLERY-DELTA (Part 2 item 2): hero sub flips Variant A -> Variant B on manifest.
                  Variant B = "...India-first voice models &mdash; hear them on Indian work, prepaid in rupees, one domestic GST invoice." -->
             <p class="hero-sub rv" data-d="1" data-hero-sub>
-              GPT, Claude, Gemini, and India-first voice models. Prepaid in rupees, one
-              domestic GST invoice.
+              The models Indian teams run: GPT, Claude, Gemini, and India-first voice.
+              Prepaid in rupees, one domestic GST invoice.
             </p>
             <!-- GALLERY-DELTA (Part 2 items 3 + 10): CTAs flip to "Compare models" (filled, -> #proof)
                  / "Talk to us" (ghost); "See what runs on it" retires. Handled by applyGalleryDeltas(). -->
@@ -2098,7 +2090,7 @@ p a:hover,
               <ul class="facts-list">
                 <li><span class="fact-no mono">01</span><span>Text, voice and image: the models Indian teams actually run</span></li>
                 <li><span class="fact-no mono">02</span><span>A prepaid rupee wallet with hard caps</span></li>
-                <li><span class="fact-no mono">03</span><span>Set up, tuned and supported. Hands-on, throughout</span></li>
+                <li><span class="fact-no mono">03</span><span>Set up, tuned and supported. Hands-on throughout.</span></li>
               </ul>
             </div>
           </aside>
@@ -2111,7 +2103,7 @@ p a:hover,
           <div class="g12">
             <div class="c1-7">
               <p class="eyebrow ticked mono rv"><span class="tick" aria-hidden="true"></span><span class="eb-label">01 / In production</span></p>
-              <h2 id="h-in-production" class="rv" data-d="1">What companies like yours run on it.</h2>
+              <h2 id="h-in-production" class="rv" data-d="1">What teams run on Aight today.</h2>
               <p class="body-lead rv" data-d="2">
                 Cypherock, RentOk and Ascend Foods run production AI on Aight today.
               </p>
@@ -2171,7 +2163,7 @@ p a:hover,
         <div class="container g12">
           <div class="c1-10">
             <p class="eyebrow band-kicker rv">Where this is going</p>
-            <p id="h-band" class="band-line serif">Building India&rsquo;s largest platform to test and deploy AI that <span class="band-red">works</span> for India.</p>
+            <p id="h-band" class="band-line serif">Building the largest platform to test and deploy AI that <span class="band-red">works</span> for India.</p>
           </div>
         </div>
       </section>
@@ -2254,7 +2246,7 @@ p a:hover,
             <h2 id="h-proof" class="rv" data-d="1">See it before you buy it.</h2>
             <p class="body-lead rv" data-d="2">
               The same Indian brief, run through the models we carry. Two outputs, unlabelled.
-              Pick the one you&rsquo;d send a customer, then see which is which. Then run your own
+              Pick the one you&rsquo;d send a customer, then see which is which. Run your own
               prompt on prepaid credits.
             </p>
             <p class="mono anno rv" data-d="3">// real outputs, captured and dated.</p>
@@ -2315,7 +2307,7 @@ p a:hover,
           <div class="c7-12 cost-copy">
             <p class="eyebrow ticked mono rv"><span class="tick" aria-hidden="true"></span><span class="eb-label" data-eyebrow-gallery="06 / Cost control">05 / Cost control</span></p>
             <h2 id="h-cost" class="rv" data-d="1">Spend you can see. Rupees that behave.</h2>
-            <p class="body-lead rv" data-d="2">Caps per team. Live visibility. A prepaid wallet spend can&rsquo;t exceed.</p>
+            <p class="body-lead rv" data-d="2">Set a hard cap for each team and track usage live. Spend stops at the limit you set.</p>
             <p class="body-lead rv" data-d="3">
               And the India part: the models are excellent. Buying them here is the mess. Five
               foreign dashboards, forex fees, reverse-charge GST. Aight is one place, one domestic GST
@@ -2427,6 +2419,8 @@ p a:hover,
               <p class="form-hint">Already spending on AI? Mention it. Bring last month&rsquo;s bill to the call.</p>
               <div class="form-actions">
                 <button class="btn btn-primary" type="submit">Send</button>
+                <!-- Separator + Book-a-call both mount only when CAL_URL is set, so "Send" never runs into "Book a call". -->
+                <span class="form-actions-sep mono" data-cal-sep hidden aria-hidden="true">or</span>
                 <!-- CONFIG: CAL_URL — Calendly (Part 4 item 1). Button stays hidden until CAL_URL is set below. -->
                 <a class="btn btn-secondary" data-cal-link hidden target="_blank" rel="noopener">Book a call</a>
               </div>
@@ -2446,7 +2440,7 @@ p a:hover,
           </div>
           <nav class="foot-links" aria-label="Footer">
             <!-- GALLERY-DELTA (Part 2 item 1): footer "Gallery" link mounts on manifest. Hidden in no-gallery state. -->
-            <a href="#proof" data-gallery-nav hidden>Gallery</a>
+            <a href="#proof" data-gallery-nav hidden>Compare models</a>
             <a href="#in-production">Customers</a>
             <a href="#talk">Talk to us</a>
             <!-- Legal pages pending — re-add these links once privacy.html / terms.html / refunds.html are published (drafts in /legal). Removed for now so they don't 404 on the live site. -->
@@ -2747,7 +2741,7 @@ function buildHeroShots(manifest) {
   topline.className = "panel-topline";
   const label = document.createElement("span");
   label.className = "mono eyebrow-panel";
-  label.textContent = "The gallery. Same brief, two models";
+  label.textContent = "Same brief · two models";
   topline.appendChild(label);
   panel.appendChild(topline);
 
@@ -2769,6 +2763,7 @@ function buildHeroShots(manifest) {
     img.addEventListener("error", () => fig.remove());
     frame.appendChild(img);
     fig.appendChild(frame);
+    if (s.note) { const cap = document.createElement("figcaption"); cap.textContent = s.note; fig.appendChild(cap); }
     grid.appendChild(fig);
     built += 1;
   });
@@ -3151,7 +3146,7 @@ function applyGalleryDeltas(manifest) {
   const heroSub = document.querySelector("[data-hero-sub]");
   if (heroSub) {
     heroSub.textContent =
-      "GPT, Claude, Gemini, and India-first voice models. Hear them on Indian work, prepaid in rupees, one domestic GST invoice.";
+      "GPT, Claude, Gemini, and India-first voice models. Hear them on Indian work. Prepaid in rupees, one domestic GST invoice.";
   }
 
   // Item 3 + 10 — hero CTAs flip: Compare models (filled, → Proof) / Talk to us (ghost).
@@ -3255,6 +3250,8 @@ if (form) {
   if (cal && CAL_URL) {
     cal.href = CAL_URL;
     cal.hidden = false;
+    const calSep = document.querySelector("[data-cal-sep]");
+    if (calSep) calSep.hidden = false;
   }
 }
 </script>
