@@ -47,12 +47,12 @@
           <p class="eyebrow"><span class="tick" aria-hidden="true"></span>Legal / Terms and conditions</p>
           <h1>Terms and Conditions</h1>
           <div class="legal-meta mono">
-            <span>Last updated <time datetime="2026-09-14">14 September 2026</time></span>
+            <span>Last updated <time datetime="2026-09-15">15 September 2026</time></span>
             <span>Ashva Intelligence Pvt Ltd</span>
           </div>
           <p class="legal-lead">
             These are the rules for buying and using AI credits from Aight. We wrote them in plain English.
-            If anything is unclear, email vaibhav@getaight.ai before you pay.
+            If anything is unclear, email <a href="mailto:hello@getaight.ai">hello@getaight.ai</a> before you pay.
           </p>
 
           <div class="legal-summary">
@@ -61,13 +61,15 @@
               <dt>What you buy</dt>
               <dd>Prepaid credits. You pay first in rupees, then use AI models until the balance runs out.</dd>
               <dt>Minimum top-up</dt>
-              <dd><span class="money">₹500</span> per top-up. Your first top-up is capped at <span class="money">₹2,000</span>. The second opens 48 hours later.</dd>
+              <dd><span class="money">₹500</span> per top-up. Your first top-up is capped at <span class="money">₹2,000</span>. The second opens 48 hours later. After that, up to <span class="money">₹50,000</span> of credit a day.</dd>
               <dt>Expiry</dt>
               <dd>None. Your balance never expires.</dd>
               <dt>Refunds</dt>
-              <dd>Unused balance refunded on request, within 7 working days, to the original payment method.</dd>
+              <dd>Unused balance refunded on request, within 7 working days, in rupees, at the rate on the invoice you bought it at, to the account you paid from.</dd>
               <dt>Fee</dt>
-              <dd>A fixed 2% payment-processing fee, shown as its own line at checkout. Not refundable.</dd>
+              <dd>UPI and bank transfer carry no fee, at any amount. Card payments are not open yet; when they open, a card payment will carry a fee of 2% of the total you pay, shown as its own line.</dd>
+              <dt>GST</dt>
+              <dd>18%, added on top of the credit you buy. <span class="money">₹10,000</span> of credit costs <span class="money">₹11,800</span>.</dd>
               <dt>Approval</dt>
               <dd>We approve each new account within 24 hours of sign-up, weekends included. No top-ups before that.</dd>
               <dt>Invoice</dt>
@@ -93,7 +95,7 @@
               <div class="row"><span class="lbl">CIN</span><span class="mono">U62099HR2026PTC147038</span></div>
               <div class="row"><span class="lbl">GSTIN</span><span class="mono">06ABFCA9973K1Z2</span></div>
               <div class="row"><span class="lbl">Registered office</span><span>683, Basai Road, Near Mother Dairy, Basai, Gurugram, Haryana 122001, India</span></div>
-              <div class="row"><span class="lbl">Email</span><span><a href="mailto:vaibhav@getaight.ai">vaibhav@getaight.ai</a></span></div>
+              <div class="row"><span class="lbl">Email</span><span><a href="mailto:hello@getaight.ai">hello@getaight.ai</a></span></div>
             </address>
             <p>
               "CIN" is our company registration number. "GSTIN" is our GST number.
@@ -105,14 +107,17 @@
               Aight is a gateway. One key and one balance give you access to AI models from several companies.
             </p>
             <p>
-              A "model" is an AI system that reads your text and writes a reply. GPT, Gemini and Claude are models.
-              OpenAI, Google and Anthropic make the models. Microsoft, Google and Amazon host them in their data centres.
-              We call Microsoft, Google and Amazon our cloud providers.
+              A "model" is an AI system that reads your text and writes a reply. GPT and Gemini are the models we
+              sell today. OpenAI and Google make them; Microsoft and Google host them in their data centres. We call
+              Microsoft, Google and Amazon our cloud providers. Claude, made by Anthropic and hosted by Amazon in the
+              United States, is next on our list and is not on sale yet.
             </p>
             <p>
               An "API" is the door your software uses to talk to ours.
               An "API key" is a secret code your software sends with each request. It tells us which account to charge.
-              Your "console" is the web page where you manage keys and see spend.
+              Your "console" is your account page at console.getaight.ai, where you sign up, top up, and see your
+              own top-up history. Managing keys and reading spend in the console is not built yet. Until it is, we
+              make and change keys for you by email.
             </p>
             <p>
               A "token" is a piece of text, about four characters long. Models are priced per token.
@@ -141,8 +146,9 @@
               </li>
               <li>Keep your API keys secret. Anything sent with your key is charged to your balance, even if you did not send it.</li>
               <li>
-                If a key leaks, revoke it in your console at once and tell us. "Revoke" means switch the key off for good.
-                We then help you rotate it. "Rotate" means issue a fresh key to replace the old one.
+                If a key leaks, email <a href="mailto:hello@getaight.ai">hello@getaight.ai</a> at once, with "key leaked" as the
+                first words. We switch that key off for good and issue you a fresh one. There is no button for this in the
+                console yet, so the email is how it is done, and we read that inbox from 9 am to 9 pm IST, seven days a week.
               </li>
             </ol>
 
@@ -152,7 +158,8 @@
               <li>
                 The minimum top-up is <span class="money">₹500</span>.
                 Your first top-up is capped at <span class="money">₹2,000</span>.
-                You can make a second top-up 48 hours after the first. After that there is no set cap.
+                You can make a second top-up 48 hours after the first. After that you can add up to
+                <span class="money">₹50,000</span> of credit a day.
                 If we ever need to limit an account, we email you first.
               </li>
               <li>Your balance never expires. It stays in your account until you use it or ask for a refund.</li>
@@ -163,31 +170,44 @@
                 So two top-ups at two rates simply add up. Requests do not care which top-up they came from.
               </li>
               <li>
-                Every model's rupee price is <a href="/#pricing">shown before you buy</a>. Email us and we send the current price sheet the same day.
-                We can change prices, but we email you at least 7 days before a rise.
+                Every model's rupee price is <a href="/#pricing">published in our price table</a>, with the region it runs in and
+                the date and rate it was worked out at. We can change prices, but we email you at least 7 days before a rise.
               </li>
               <li>Your balance is not a bank deposit. It earns no interest and cannot be moved to another account.</li>
+              <li>
+                <strong>How we make money.</strong> Models are priced in dollars by Microsoft, Google and Amazon. We convert
+                your rupees at the RBI reference rate of the day and add nothing to it, so we make nothing on the conversion.
+                Model prices on our list are the provider's own list price with nothing added, shown per model before you buy.
+              </li>
               <li>If your balance reaches zero, requests are refused until you top up. We never let you go into debt.</li>
             </ol>
 
             <h2 id="fee"><span class="num">05</span>How you pay, and the fee</h2>
             <ol>
               <li>
-                Payments go through Razorpay, our payment provider. Razorpay is the company that takes your money and passes it to us.
-                You can pay by card, UPI or net banking.
+                You pay us by UPI or by bank transfer, for any amount. Both carry <strong>no fee</strong>: every rupee of
+                credit you buy reaches your balance.
               </li>
-              <li>For top-ups above <span class="money">₹20,000</span> you can also pay by NEFT or bank transfer. Email us for the details.</li>
-              <li>Your bank or card statement shows "Ashva Intelligence Pvt Ltd", not "Aight".</li>
               <li>
-                Every top-up carries a fixed payment-processing fee of 2%. It covers what Razorpay charges us.
-                We show it as a separate line at checkout, before you pay.
+                We show you our UPI ID and our bank details on the top-up screen. You tell us the UTR, the 12-digit
+                reference your bank or UPI app gives you once the payment is done.
+              </li>
+              <li>
+                We credit your balance within 24 hours, weekends included, <strong>once the payment is visible in our bank
+                account</strong>. We do not credit on a screenshot or a phone call. You get an email the moment it is credited.
+              </li>
+              <li>Your bank statement shows "Ashva Intelligence Pvt Ltd", not "Aight".</li>
+              <li>
+                <strong>Card payments are not open yet.</strong> When they open, a card payment will carry a fee of 2% of the
+                total you pay, shown as its own line before you pay. UPI and bank transfer will stay free.
               </li>
             </ol>
             <div class="example">
-              <p><strong>Example.</strong> You top up <span class="money">₹10,000</span> of usage.</p>
-              <p>Fee at 2%: <span class="money">₹200</span>. You pay <span class="money">₹10,200</span>. Your balance shows <span class="money">₹10,000</span> worth of credit.</p>
+              <p><strong>Example, today.</strong> You buy <span class="money">₹10,000</span> of credit by UPI.</p>
+              <p>Fee: <span class="money">₹0</span>. GST at 18%: <span class="money">₹1,800</span>. You pay <span class="money">₹11,800</span>, and <span class="money">₹10,000</span> of credit reaches your balance.</p>
+              <p><strong>Example, when cards open.</strong> On a <span class="money">₹10,200</span> card payment the fee is <span class="money">₹204</span>, shown as its own line.</p>
             </div>
-            <p>The fee is not refundable. See section 07.</p>
+            <p>A card fee, once cards open, is not refundable, because the card network has already kept it. See section 07.</p>
 
             <h2 id="gst"><span class="num">06</span>Invoices and GST</h2>
             <ol>
@@ -210,8 +230,9 @@
             <h2 id="refunds"><span class="num">07</span>Refunds and cancellation</h2>
             <p>
               You can ask for a refund of your unused balance at any time. We pay it within 7 working days of your request,
-              to the payment method you used. The 2% payment-processing fee is not refunded.
-              Credits already used are not refunded.
+              in rupees, to the account you paid from. We convert your unused balance back at the rate printed on the invoice
+              you bought it at, never at today's rate, so you get back the rupees you paid. The GST comes back too, as a credit
+              note. Credits already used are not refunded, and a card fee, once cards open, is not refunded.
             </p>
             <p>
               During a partial refund, your keys keep working on the balance that remains.
@@ -252,10 +273,10 @@
               <li>The models belong to third parties. We route your request and bill it; we do not make the models.</li>
               <li>Model outputs can be wrong. Check them before you rely on them, especially for legal, medical or financial use.</li>
               <li>
-                Not every model runs in India. GPT models run in Microsoft's South India data centre.
-                Gemini runs on Google's global setting and may run outside India.
-                Claude, if we offer it, runs on Amazon's global or US routes, outside India.
-                We state the route for each model before you buy; email us for the current sheet.
+                Not every model runs in India. Our <a href="/#pricing">price table</a> names the region for every model, row by
+                row, and it is the region your request is actually processed in. "South Asia data zone" means it stays inside
+                the zone. "Global" means the provider may process it anywhere in the world. Claude is not on sale yet; when it
+                opens it will run through Amazon Bedrock, hosted in the United States, and its row will say so before you buy.
               </li>
               <li>Providers change, retire and re-price models. We give at least 14 days' notice before we remove a model, where the provider allows it.</li>
               <li>When a model is retired we name a replacement. If none suits you, you can ask for a refund under section 07.</li>
@@ -266,7 +287,7 @@
               <li>We aim to keep the service up at all times, but we do not promise it. Providers and networks fail.</li>
               <li>We do not charge for requests that fail on our side.</li>
               <li>Planned maintenance is announced by email at least 24 hours ahead.</li>
-              <li>Email <a href="mailto:vaibhav@getaight.ai">vaibhav@getaight.ai</a>. We reply within 1 working day.</li>
+              <li>Email <a href="mailto:hello@getaight.ai">hello@getaight.ai</a>. We reply within 1 working day.</li>
             </ol>
 
             <h2 id="data"><span class="num">12</span>Your data</h2>
@@ -311,7 +332,7 @@
             </p>
             <address>
               <div class="row"><span class="lbl">Name</span><span>Vaibhav Chawla, founder</span></div>
-              <div class="row"><span class="lbl">Email</span><span><a href="mailto:vaibhav@getaight.ai">vaibhav@getaight.ai</a></span></div>
+              <div class="row"><span class="lbl">Email</span><span><a href="mailto:hello@getaight.ai">hello@getaight.ai</a></span></div>
               <div class="row"><span class="lbl">Entity</span><span>Ashva Intelligence Pvt Ltd</span></div>
               <div class="row"><span class="lbl">CIN</span><span class="mono">U62099HR2026PTC147038</span></div>
               <div class="row"><span class="lbl">GSTIN</span><span class="mono">06ABFCA9973K1Z2</span></div>
@@ -320,9 +341,10 @@
             <p>If you would rather not go through the founder, or we have not fixed it, use these routes.</p>
             <ul>
               <li>
-                <strong>For a payment.</strong> Raise a dispute with Razorpay, our payment provider, at
-                <a href="https://razorpay.com/support/" rel="noopener">razorpay.com/support</a>.
-                Razorpay handles card, UPI and net-banking disputes independently of us.
+                <strong>For a payment.</strong> You pay us by UPI or bank transfer, so a payment dispute goes to your own bank,
+                through its grievance process. Tell us at the same time, at
+                <a href="mailto:hello@getaight.ai">hello@getaight.ai</a>, and we will send you the UTR, the invoice and our
+                bank's confirmation so your bank has everything it needs.
               </li>
               <li>
                 <strong>For any consumer complaint.</strong> Call the National Consumer Helpline on 1915, or visit
@@ -351,15 +373,19 @@
             <p class="foot-identity">Where Indian businesses buy AI.</p>
           </div>
           <nav class="foot-links" aria-label="Footer">
+            <a href="../index.html#pricing">Prices</a>
+            <a href="/api/">API</a>
             <a href="../index.html#in-production">Customers</a>
             <a href="../index.html#talk">Talk to us</a>
+            <a href="https://console.getaight.ai/signin">Sign in</a>
+            <a href="https://console.getaight.ai">Create an account</a>
             <a href="privacy.html">Privacy</a>
             <a href="terms.html">Terms</a>
             <a href="refunds.html">Refunds &amp; cancellations</a>
           </nav>
         </div>
         <div class="foot-meta mono">
-          <span>vaibhav@getaight.ai</span>
+          <span><a href="mailto:hello@getaight.ai">hello@getaight.ai</a></span>
           <span>&copy; 2026 Aight</span>
         </div>
         <div class="compliance mono" aria-label="Company registration details">

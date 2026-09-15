@@ -7,14 +7,14 @@
     <link rel="canonical" href="https://getaight.ai/" />
     <meta
       name="description"
-      content="Use GPT, Claude, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
+      content="Use GPT, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aight" />
     <meta property="og:title" content="Aight — Where Indian businesses buy AI" />
     <meta
       property="og:description"
-      content="Use GPT, Claude, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
+      content="Use GPT, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
     />
     <meta property="og:url" content="https://getaight.ai/" />
     <meta property="og:image" content="https://getaight.ai/og-image.png" />
@@ -24,7 +24,7 @@
     <meta name="twitter:title" content="Aight — Where Indian businesses buy AI" />
     <meta
       name="twitter:description"
-      content="Use GPT, Claude, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
+      content="Use GPT, Gemini and India-first voice models through one prepaid rupee account. Hard caps, one GST invoice, hands-on support."
     />
     <meta name="twitter:image" content="https://getaight.ai/og-image.png" />
     <link
@@ -2058,6 +2058,140 @@ p a:hover,
     row-gap: 4px;
   }
 }
+
+/* ============================================================
+   TRUTH PASS 15 Sept 2026 — hero account line and the §06 price table.
+   Tokens only; nothing new invented.
+   ============================================================ */
+.hero-note {
+  margin-top: 20px;
+  max-width: 46ch;
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.hero-note a { color: var(--ink); }
+
+.pricing-notes {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin: 48px 0 0;
+}
+@media (min-width: 860px) {
+  .pricing-notes { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+.pricing-note {
+  background: var(--paper-raised);
+  border: var(--hair-w) solid var(--hairline);
+  border-radius: var(--r-panel);
+  padding: 22px 24px;
+}
+.pricing-note .eyebrow-panel {
+  display: block;
+  margin: 0 0 10px;
+  font-size: var(--text-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.pricing-note p:last-child {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.price-table-h {
+  margin: 56px 0 8px;
+  font-family: var(--font-serif);
+  font-size: var(--text-h3);
+  line-height: 1.25;
+  color: var(--ink);
+}
+.price-rate {
+  margin: 0 0 20px;
+  max-width: 74ch;
+  font-size: var(--text-mono);
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* The table scrolls inside its own box; the page never scrolls sideways. */
+.price-table-wrap {
+  overflow-x: auto;
+  border: var(--hair-w) solid var(--hairline);
+  border-radius: var(--r-panel);
+  background: var(--paper-raised);
+  -webkit-overflow-scrolling: touch;
+}
+.price-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+.price-table th,
+.price-table td {
+  padding: 13px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: var(--hair-w) solid var(--hairline);
+}
+.price-table thead th {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.price-table tbody th {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.price-table tbody tr:last-child th,
+.price-table tbody tr:last-child td { border-bottom: 0; }
+.price-table td { color: var(--ink-soft); }
+.price-table .pt-region { white-space: nowrap; }
+.price-table .pt-num {
+  text-align: right;
+  white-space: nowrap;
+  color: var(--ink);
+  font-family: var(--font-currency);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.price-table thead th.pt-num { text-align: right; }
+
+.price-notes {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 78ch;
+}
+.price-notes li {
+  position: relative;
+  margin: 0 0 10px;
+  padding-left: 18px;
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.price-notes li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: var(--hair-w);
+  background: var(--hairline-strong);
+}
+.price-notes strong { color: var(--ink); }
 </style>
     
   </head>
@@ -2070,11 +2204,14 @@ p a:hover,
         <div class="nav-links" id="nav-links" data-nav-links>
           <!-- GALLERY-DELTA (Part 2 item 1): nav "Gallery" link mounts on manifest. Hidden in no-gallery state. -->
           <a href="#proof" data-gallery-nav hidden>Compare models</a>
+          <a href="#pricing">Prices</a>
+          <a href="/api/">API</a>
           <a href="#in-production">Customers</a>
           <a href="#talk">Contact</a>
+          <a href="https://console.getaight.ai/signin">Sign in</a>
         </div>
         <div class="nav-actions">
-          <a class="btn btn-primary btn-sm" href="#talk">Talk to us</a>
+          <a class="btn btn-primary btn-sm" href="https://console.getaight.ai">Create an account</a>
           <button
             class="nav-toggle"
             type="button"
@@ -2095,18 +2232,23 @@ p a:hover,
         <div class="container g12 hero-grid">
           <div class="hero-copy c1-6">
             <h1 id="hero-h">Where Indian businesses buy AI<span class="stop">.</span></h1>
-            <!-- GALLERY-DELTA (Part 2 item 2): hero sub flips Variant A -> Variant B on manifest.
-                 Variant B = "...India-first voice models &mdash; hear them on Indian work, prepaid in rupees, one domestic GST invoice." -->
+            <!-- TRUTH PASS 15 Sept 2026: this sentence is fixed in the HTML. It used to be
+                 rewritten by applyGalleryDeltas() after the manifest fetch resolved, so a visitor
+                 who read before the fetch landed saw a different sentence at the same address. -->
             <p class="hero-sub rv" data-d="1" data-hero-sub>
-              The models Indian teams run: GPT, Claude, Gemini, and India-first voice.
+              The models Indian teams run: GPT, Gemini, and India-first voice.
               Prepaid in rupees, one domestic GST invoice.
             </p>
-            <!-- GALLERY-DELTA (Part 2 items 3 + 10): CTAs flip to "Compare models" (filled, -> #proof)
-                 / "Talk to us" (ghost); "See what runs on it" retires. Handled by applyGalleryDeltas(). -->
+            <!-- TRUTH PASS 15 Sept 2026: fixed in the HTML for the same reason as the sub above. -->
             <div class="cta-row rv" data-d="2" data-hero-cta>
-              <a class="btn btn-primary" href="#talk">Talk to us</a>
-              <a class="btn btn-secondary" href="#in-production">See what runs on it</a>
+              <a class="btn btn-primary" href="https://console.getaight.ai">Create an account</a>
+              <a class="btn btn-secondary" href="#talk">Talk to us</a>
             </div>
+            <p class="hero-note rv" data-d="3">
+              An account is free to open at
+              <a href="https://console.getaight.ai">console.getaight.ai</a>. We approve new accounts
+              within 24 hours, weekends included, and nothing can be spent before that.
+            </p>
           </div>
 
           <!--
@@ -2213,7 +2355,7 @@ p a:hover,
             <ul class="ledger rv" data-d="3">
               <li>
                 <span class="lg-key">Text</span>
-                <span class="lg-val">GPT &middot; Claude &middot; Gemini.<br />Llama and open models<span class="lg-sub">, from suppliers we&rsquo;ve checked.</span></span>
+                <span class="lg-val">GPT &middot; Gemini, on the counter today.<br /><span class="lg-sub">Claude, through Amazon Bedrock and hosted in the United States, is next. Llama and open models, from suppliers we&rsquo;ve checked.</span></span>
               </li>
               <li>
                 <span class="lg-key">Voice</span>
@@ -2344,7 +2486,7 @@ p a:hover,
               foreign dashboards, forex fees, reverse-charge GST. Aight is one place, one domestic GST
               invoice, filed without ceremony.
             </p>
-            <p class="mono anno rv" data-d="3">// no forex. no reverse-charge paperwork. no surprise bills.</p>
+            <p class="mono anno rv" data-d="3">// no reverse-charge paperwork. no surprise bills.</p>
           </div>
           <div class="c1-12">
             <p class="moniker rv" data-d="3">AI, billed right<span class="stop">.</span></p>
@@ -2357,17 +2499,17 @@ p a:hover,
         <div class="container g12">
           <div class="c1-7">
             <p class="eyebrow ticked mono rv"><span class="tick" aria-hidden="true"></span><span class="eb-label" data-eyebrow-gallery="07 / Pricing rules">06 / Pricing rules</span></p>
-            <h2 id="h-pricing" class="rv" data-d="1">Seven rules. The same ones in the small print.</h2>
+            <h2 id="h-pricing" class="rv" data-d="1">Eight rules. The same ones in the small print.</h2>
             <p class="body-lead rv" data-d="2">
-              You pay in rupees before you use anything. Every model's rupee price is
-              <a href="#pricing">shown before you buy</a>. Email us and we send the current price sheet the same day.
-              We only change these with 7 days' email notice.
+              You pay in rupees before you use anything. Every model&rsquo;s rupee price is in the
+              table below, worked out from the provider&rsquo;s own list price at today&rsquo;s RBI
+              reference rate. We only change these with 7 days&rsquo; email notice.
             </p>
 
             <dl class="pricing-rules rv" data-d="3">
               <div class="pricing-row">
                 <dt>Minimum top-up</dt>
-                <dd><span class="money">₹500</span>. Your first top-up is capped at <span class="money">₹2,000</span>; the second opens 48 hours later.</dd>
+                <dd><span class="money">&#8377;500</span>. Your first top-up is capped at <span class="money">&#8377;2,000</span>; the second opens 48 hours later. After that you can add up to <span class="money">&#8377;50,000</span> of credit a day.</dd>
               </div>
               <div class="pricing-row">
                 <dt>Expiry</dt>
@@ -2375,15 +2517,19 @@ p a:hover,
               </div>
               <div class="pricing-row">
                 <dt>Refunds</dt>
-                <dd>Unused balance back on request, within 7 working days, to the same payment method.</dd>
+                <dd>Unused balance back on request, within 7 working days, in rupees, at the rate printed on the invoice you bought it at, to the account you paid from.</dd>
               </div>
               <div class="pricing-row">
                 <dt>How you pay</dt>
-                <dd>UPI or bank transfer, with no fee, credited to your balance within 24 hours of our approving the payment. Card payments are not open yet; when they open they carry a fixed 2% processing fee, shown as its own line &mdash; <span class="money">₹200</span> on a <span class="money">₹10,000</span> top-up.</dd>
+                <dd>UPI or bank transfer, any amount, with no fee, credited to your balance within 24 hours of the payment showing in our bank account. Card payments are not open yet; when they open, a card payment carries a fee of 2% of the total you pay, shown as its own line &mdash; <span class="money">&#8377;204</span> on a <span class="money">&#8377;10,200</span> payment.</dd>
+              </div>
+              <div class="pricing-row">
+                <dt>GST</dt>
+                <dd>18%, added on top of the credit you buy. <span class="money">&#8377;10,000</span> of credit costs <span class="money">&#8377;11,800</span>, and the <span class="money">&#8377;1,800</span> is claimable against your invoice.</dd>
               </div>
               <div class="pricing-row">
                 <dt>Model prices</dt>
-                <dd>Per token, shown before you buy. Models are priced in dollars, so your balance is kept in dollars. Each top-up converts at that day's rate, shown on the invoice.</dd>
+                <dd>At cost: the provider&rsquo;s own list price, converted to rupees, per token. The table below is today&rsquo;s.</dd>
               </div>
               <div class="pricing-row">
                 <dt>Invoice</dt>
@@ -2394,7 +2540,144 @@ p a:hover,
                 <dd>Within 24 hours of sign-up, weekends included, before your first top-up.</dd>
               </div>
             </dl>
+          </div>
 
+          <div class="c1-12">
+            <div class="pricing-notes rv" data-d="3">
+              <div class="pricing-note">
+                <p class="eyebrow-panel mono">Your balance is in dollars</p>
+                <p>
+                  Model prices are in dollars, so your balance is kept in dollars. Your rupees are
+                  converted once, on the day you pay, at the RBI reference rate with nothing added.
+                  After that your balance does not move with the rupee, and a refund returns the
+                  rupees you paid.
+                </p>
+              </div>
+              <div class="pricing-note">
+                <p class="eyebrow-panel mono">How we make money</p>
+                <p>
+                  Models are priced in dollars by Microsoft, Google and Amazon. We convert your
+                  rupees at the RBI reference rate of the day and add nothing to it, so we make
+                  nothing on the conversion. Model prices on our list are the provider&rsquo;s own
+                  list price with nothing added, shown per model before you buy.
+                </p>
+              </div>
+            </div>
+
+            <h3 class="price-table-h rv" data-d="3">Every model on the counter today, and what it costs.</h3>
+            <p class="price-rate mono rv" data-d="3">
+              Credited at the RBI reference rate of the day. Today, 15 September 2026, that is
+              <span class="money">&#8377;95.9253</span> per US$. We add nothing to it.
+            </p>
+
+            <div class="price-table-wrap rv" data-d="3">
+              <table class="price-table">
+                <caption class="sr-only">Model prices in rupees per 10 lakh tokens at &#8377;95.9253 per US dollar on 15 September 2026</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Model</th>
+                    <th scope="col">Good for</th>
+                    <th scope="col">Region</th>
+                    <th scope="col" class="pt-num">In, per 10 lakh tokens</th>
+                    <th scope="col" class="pt-num">Out, per 10 lakh tokens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" class="mono">gpt-5-mini</th>
+                    <td>everyday work, and the cheapest chat model on the list</td>
+                    <td class="pt-region">Global</td>
+                    <td class="pt-num"><span class="money">&#8377;23.98</span></td>
+                    <td class="pt-num"><span class="money">&#8377;191.85</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="mono">gemini-2.5-flash</th>
+                    <td>fast, high volume — retires 20 Oct 2026, move to gemini-3.5-flash</td>
+                    <td class="pt-region">Global</td>
+                    <td class="pt-num"><span class="money">&#8377;28.77</span></td>
+                    <td class="pt-num"><span class="money">&#8377;239.81</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="mono">gpt-4.1-mini</th>
+                    <td>older, still supported, very large context window</td>
+                    <td class="pt-region">Global</td>
+                    <td class="pt-num"><span class="money">&#8377;38.37</span></td>
+                    <td class="pt-num"><span class="money">&#8377;153.48</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="mono">gpt-5.4-mini</th>
+                    <td>the newest small model, and the strongest of the three minis</td>
+                    <td class="pt-region">South Asia data zone</td>
+                    <td class="pt-num"><span class="money">&#8377;86.33</span></td>
+                    <td class="pt-num"><span class="money">&#8377;517.99</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="mono">gemini-2.5-pro</th>
+                    <td>the hardest reasoning — retires 20 Oct 2026, move to gemini-3.1-pro-preview</td>
+                    <td class="pt-region">Global</td>
+                    <td class="pt-num"><span class="money">&#8377;119.90</span> up to 200K tokens,<br /><span class="money">&#8377;239.81</span> above</td>
+                    <td class="pt-num"><span class="money">&#8377;959.25</span> up to 200K tokens,<br /><span class="money">&#8377;1,438.87</span> above</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="mono">gemini-3.5-flash</th>
+                    <td>fast, high volume, and what replaces gemini-2.5-flash on 20 October</td>
+                    <td class="pt-region">Global</td>
+                    <td class="pt-num"><span class="money">&#8377;143.88</span></td>
+                    <td class="pt-num"><span class="money">&#8377;863.32</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="mono">gemini-3.1-pro-preview</th>
+                    <td>the hardest reasoning, and what replaces gemini-2.5-pro on 20 October</td>
+                    <td class="pt-region">Global</td>
+                    <td class="pt-num"><span class="money">&#8377;191.85</span> up to 200K tokens,<br /><span class="money">&#8377;383.70</span> above</td>
+                    <td class="pt-num"><span class="money">&#8377;1,151.10</span> up to 200K tokens,<br /><span class="money">&#8377;1,726.65</span> above</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="mono">text-embedding-3-small</th>
+                    <td>search and matching</td>
+                    <td class="pt-region">Global</td>
+                    <td class="pt-num"><span class="money">&#8377;1.91</span></td>
+                    <td class="pt-num">n/a</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul class="price-notes rv" data-d="3">
+              <li>
+                A token is about three quarters of a word. 10 lakh tokens is roughly 7,50,000 words.
+              </li>
+              <li>
+                Two prices on one row means the model costs more on a long request. Send more than
+                200,000 tokens in one go and the whole request &mdash; everything you send and
+                everything the model writes back &mdash; is charged at the higher price, not just the
+                part over the line. <span class="mono">gemini-2.5-pro</span> and
+                <span class="mono">gemini-3.1-pro-preview</span> work this way.
+              </li>
+              <li>
+                &ldquo;Region&rdquo; is where your request is actually processed. &ldquo;South Asia
+                data zone&rdquo; means it stays inside the zone. &ldquo;Global&rdquo; means the
+                provider may process it anywhere in the world.
+              </li>
+              <li>
+                Work out a month: multiply your tokens by the price. 1 crore in and 25 lakh out on
+                <span class="mono">gpt-5-mini</span> is <span class="money">&#8377;239.80</span> +
+                <span class="money">&#8377;479.62</span> =
+                <strong><span class="money">&#8377;719.42</span></strong> a month, before GST.
+              </li>
+              <li>
+                Rupee prices are rounded down to the paisa, never up. At a rate that does not divide
+                exactly, we absorb the difference.
+              </li>
+              <li>
+                Claude is not on this list. When it opens it will run through Amazon Bedrock, hosted
+                in the United States, and it will be priced the same way: the provider&rsquo;s list
+                price, converted, with nothing added.
+              </li>
+            </ul>
+          </div>
+
+          <div class="c1-7">
             <p class="mono anno rv" data-d="3">// no subscription. no card on file. no debt.</p>
 
             <div class="cta-row rv" data-d="3">
@@ -2434,9 +2717,9 @@ p a:hover,
               your account, and a team that builds the workflow with you and stays on after it ships.
               When something breaks, you reach a founder. Not a ticket queue.
             </p>
-            <!-- CONFIG: wa.me / phone number (Part 4 item 3). Placeholder href until supplied. -->
             <p class="body-lead rv" data-d="3">
-              Message us on <a href="#" data-wa-link>WhatsApp</a>, or call. A founder replies.
+              Email <a href="mailto:hello@getaight.ai">hello@getaight.ai</a>, or book a call below.
+              A founder replies.
             </p>
           </div>
         </div>
@@ -2457,8 +2740,7 @@ p a:hover,
                / "Talk to us" (ghost). Handled by applyGalleryDeltas(). -->
           <div class="cta-row cta-center rv" data-d="2" data-close-cta>
             <a class="btn btn-inverse" href="#talk">Talk to us</a>
-            <!-- CONFIG: wa.me number (Part 4 item 3). Placeholder href until supplied. -->
-            <a class="btn btn-secondary-inverse" href="#" data-wa-link>Message us on WhatsApp</a>
+            <a class="btn btn-secondary-inverse" href="mailto:hello@getaight.ai">Email hello@getaight.ai</a>
           </div>
 
           <div class="talk-card rv" id="talk" data-d="3">
@@ -2525,15 +2807,19 @@ p a:hover,
           <nav class="foot-links" aria-label="Footer">
             <!-- GALLERY-DELTA (Part 2 item 1): footer "Gallery" link mounts on manifest. Hidden in no-gallery state. -->
             <a href="#proof" data-gallery-nav hidden>Compare models</a>
+            <a href="#pricing">Prices</a>
+            <a href="/api/">API</a>
             <a href="#in-production">Customers</a>
             <a href="#talk">Talk to us</a>
+            <a href="https://console.getaight.ai/signin">Sign in</a>
+            <a href="https://console.getaight.ai">Create an account</a>
             <a href="/legal/terms.html">Terms</a>
             <a href="/legal/privacy.html">Privacy</a>
             <a href="/legal/refunds.html">Refunds &amp; cancellations</a>
           </nav>
         </div>
         <div class="foot-meta mono">
-          <span>vaibhav@getaight.ai</span>
+          <span><a href="mailto:hello@getaight.ai">hello@getaight.ai</a></span>
           <span>&copy; 2026 Aight</span>
         </div>
         <div class="compliance mono" aria-label="Company registration details">
@@ -2550,8 +2836,11 @@ p a:hover,
 
 // SET BEFORE LAUNCH — e.g. a Formspree endpoint ("https://formspree.io/f/xxxxxxxx").
 // LAUNCH BLOCKER: while this is empty the contact form submits nowhere; it shows
-// a dev-state notice instead ("Form not yet connected — email vaibhav@getaight.ai").
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/vaibhav@getaight.ai";
+// a dev-state notice instead ("Form not yet connected — email hello@getaight.ai").
+// TRUTH PASS 15 Sept 2026: moved to hello@ with the rest of the site. formsubmit.co
+// requires the destination inbox to confirm itself once before it delivers anything,
+// so hello@getaight.ai must accept that confirmation email.
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/hello@getaight.ai";
 
 // SET BEFORE LAUNCH (optional) — scheduling link (Cal.com / Calendly). If set,
 // a "Book a call" button appears beside the form. If empty, it stays hidden.
@@ -3226,20 +3515,10 @@ function applyGalleryDeltas(manifest) {
     });
   }
 
-  // Item 2 — hero sub Variant A → Variant B (demonstration verb; "tested" never returns).
-  const heroSub = document.querySelector("[data-hero-sub]");
-  if (heroSub) {
-    heroSub.textContent =
-      "GPT, Claude, Gemini, and India-first voice models. Hear them on Indian work. Prepaid in rupees, one domestic GST invoice.";
-  }
-
-  // Item 3 + 10 — hero CTAs flip: Compare models (filled, → Proof) / Talk to us (ghost).
-  const heroCta = document.querySelector("[data-hero-cta]");
-  if (heroCta) {
-    heroCta.innerHTML =
-      '<a class="btn btn-primary" href="#proof">Compare models</a>' +
-      '<a class="btn btn-secondary" href="#talk">Talk to us</a>';
-  }
+  // TRUTH PASS 15 Sept 2026: the hero sub and the hero CTAs used to be rewritten here.
+  // That is why one address showed two different first sentences: whoever read the page
+  // before this fetch resolved (or whose fetch failed) got the HTML's sentence, and
+  // everybody else got this one. The hero is now fixed in the HTML and nothing rewrites it.
 
   // Item 3 — same flip at the close: Compare models (filled) / Talk to us (ghost).
   const closeCta = document.querySelector("[data-close-cta]");
@@ -3304,7 +3583,7 @@ if (form) {
     // DEV STATE — LAUNCH BLOCKER: FORM_ENDPOINT is not set, so nothing is
     // submitted. Set FORM_ENDPOINT at the top of this file before launch.
     if (!FORM_ENDPOINT) {
-      showNote("Form not yet connected. Email vaibhav@getaight.ai");
+      showNote("Form not yet connected. Email hello@getaight.ai");
       return;
     }
 
@@ -3320,10 +3599,10 @@ if (form) {
         form.reset();
         showNote("Got it. A founder will be in touch.");
       } else {
-        showNote("Something went wrong. Please email vaibhav@getaight.ai");
+        showNote("Something went wrong. Please email hello@getaight.ai");
       }
     } catch {
-      showNote("Something went wrong. Please email vaibhav@getaight.ai");
+      showNote("Something went wrong. Please email hello@getaight.ai");
     } finally {
       if (submitBtn) submitBtn.disabled = false;
     }

@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Aight API | Aight</title>
+    <meta
+      name="description"
+      content="How to call the Aight API: the address https://api.getaight.ai/v1, an OpenAI-compatible example in curl and Python, how to get a key, the prepaid rules, and what every error code means."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23141F31'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' font-weight='600' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="/legal/fonts.css" />
+    <link rel="stylesheet" href="/legal/legal.css" />
+    <style>
+      /* API page only — code blocks and the address plate. Hairlines, no tinted boxes. */
+      .legal pre {
+        margin-top: 16px;
+        padding: 16px 18px;
+        overflow-x: auto;
+        background: var(--paper-raised);
+        border: var(--hair-w) solid var(--hairline);
+        border-left: 2px solid var(--ink);
+        border-radius: var(--r-input);
+        font-family: var(--font-mono);
+        font-size: var(--text-mono);
+        line-height: 1.7;
+        color: var(--ink);
+        -webkit-text-size-adjust: 100%;
+      }
+      .legal pre code { font: inherit; color: inherit; }
+      .legal p code,
+      .legal li code,
+      .legal td code,
+      .legal dd code {
+        font-family: var(--font-mono);
+        font-size: 0.9em;
+        background: var(--paper-raised);
+        border: var(--hair-w) solid var(--hairline);
+        border-radius: var(--r-input);
+        padding: 1px 5px;
+        white-space: nowrap;
+      }
+      .code-label {
+        margin-top: 28px;
+        font-family: var(--font-mono);
+        font-size: var(--text-eyebrow);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .address-plate {
+        margin-top: 20px;
+        padding: 22px 24px;
+        border-top: 2px solid var(--ink);
+        border-bottom: var(--hair-w) solid var(--hairline);
+        background: var(--paper-raised);
+      }
+      .address-plate .lbl {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: var(--text-eyebrow);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+      .address-plate .val {
+        display: block;
+        margin-top: 8px;
+        font-family: var(--font-mono);
+        font-size: clamp(1rem, 0.9rem + 0.7vw, 1.375rem);
+        font-weight: 500;
+        color: var(--ink);
+        word-break: break-all;
+      }
+      .legal .err-code {
+        font-family: var(--font-mono);
+        font-size: var(--text-mono);
+        white-space: nowrap;
+      }
+      .legal td.http {
+        font-family: var(--font-mono);
+        font-weight: 500;
+        white-space: nowrap;
+        font-feature-settings: "tnum" 1, "lnum" 1;
+        font-variant-numeric: tabular-nums lining-nums;
+      }
+      .legal ul { margin-top: 12px; padding-left: 1.1em; }
+      .legal ul li { margin-top: 8px; }
+      /* The error table is four columns since the truth pass (15 Sept 2026): the
+         Code column carries the machine-readable name in the body's param field.
+         It scrolls sideways inside its own box; the page body never does. */
+      .legal .table-wrap table { min-width: 46rem; }
+      .legal .table-wrap td.mono,
+      .legal .table-wrap th.mono { font-family: var(--font-mono); font-size: 0.8125rem; white-space: nowrap; }
+      .legal .table-wrap td em { font-style: normal; color: var(--ink-soft); }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav container-wide" aria-label="Primary">
+        <a class="wordmark" href="/index.html" aria-label="Aight — home">Aight<span class="stop">.</span></a>
+        <div class="nav-links" id="nav-links" data-nav-links>
+          <a href="/index.html#pricing">Prices</a>
+          <a href="/index.html#in-production">Customers</a>
+          <a href="/index.html#talk">Contact</a>
+          <a href="https://console.getaight.ai/signin">Sign in</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn btn-primary btn-sm" href="https://console.getaight.ai">Create an account</a>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="nav-links"
+            data-nav-toggle
+          >
+            <span aria-hidden="true"></span><span aria-hidden="true"></span>
+            <span class="sr-only">Menu</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="section legal-hero">
+        <div class="container">
+          <p class="eyebrow"><span class="tick" aria-hidden="true"></span>API / Start here</p>
+          <h1>The Aight API</h1>
+          <div class="legal-meta mono">
+            <span>Last updated <time datetime="2026-09-15">15 September 2026</time></span>
+            <span>Ashva Intelligence Pvt Ltd</span>
+          </div>
+          <p class="legal-lead">
+            You reached the address your software talks to. This page is the whole of it: where to
+            point your code, how to get a key, what you pay, and what every error means. If you have
+            written code against OpenAI before, your first call is about five minutes away.
+          </p>
+
+          <div class="legal-summary">
+            <span class="eyebrow">The short version</span>
+            <dl>
+              <dt>Address</dt>
+              <dd><span class="mono">https://api.getaight.ai/v1</span></dd>
+              <dt>Shape</dt>
+              <dd>OpenAI-compatible. Change the base address and the key in your existing code. Nothing else.</dd>
+              <dt>Key</dt>
+              <dd>Create an account at <a href="https://console.getaight.ai">console.getaight.ai</a>, then we issue the key. We approve new accounts within 24 hours, weekends included.</dd>
+              <dt>Payment</dt>
+              <dd>Prepaid in rupees. Minimum top-up <span class="money">₹500</span>. No card on file, no monthly bill.</dd>
+              <dt>Money refusal</dt>
+              <dd>Always a <span class="mono">402</span>, never a <span class="mono">429</span>. A 402 means stop and top up, not retry.</dd>
+              <dt>Help</dt>
+              <dd><a href="mailto:hello@getaight.ai">hello@getaight.ai</a>, 9 am to 9 pm IST, seven days a week. A founder replies.</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="section legal">
+        <div class="container">
+          <article>
+
+            <h2 id="address"><span class="num">01</span>The address</h2>
+            <p>
+              Send your requests here. This is the only address you need.
+            </p>
+
+            <div class="address-plate">
+              <span class="lbl">Base address</span>
+              <span class="val">https://api.getaight.ai/v1</span>
+            </div>
+
+            <p>
+              The Aight API is <strong>OpenAI-compatible</strong>. That means it speaks the same
+              language as OpenAI's own API: the same paths, the same request shape, the same reply
+              shape. So any tool that already talks to OpenAI talks to us after you change two
+              things — the base address and the key. The official OpenAI libraries for Python and
+              Node, LangChain, LlamaIndex, Cursor, and plain <code>curl</code> all work this way.
+            </p>
+            <p>These are the paths open to you today.</p>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Path</th>
+                    <th scope="col">What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>POST /v1/chat/completions</code></td>
+                    <td>Send messages to a model and read its reply. This is the one almost everybody uses.</td>
+                  </tr>
+                  <tr>
+                    <td><code>POST /v1/embeddings</code></td>
+                    <td>Turn text into numbers for search and matching.</td>
+                  </tr>
+                  <tr>
+                    <td><code>GET /v1/models</code></td>
+                    <td>List the models your key is allowed to call. Send your key with it.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Ask <code>GET /v1/models</code> rather than guessing a model name. The list depends on
+              your key, and it grows. Today it includes <code>gpt-5.4-mini</code>,
+              <code>gpt-5-mini</code>, <code>gpt-4.1-mini</code>, <code>gemini-2.5-pro</code>,
+              <code>gemini-2.5-flash</code> and <code>text-embedding-3-small</code>.
+            </p>
+
+            <h2 id="first-call"><span class="num">02</span>Your first call</h2>
+            <p>
+              Both examples below do the same thing: send one sentence to a model and print the
+              reply. Both read the key from an environment variable rather than carrying it in the
+              text, which is how you should keep it. Put your key there first — every Aight key
+              starts with <code>sk-aight-</code>:
+            </p>
+<pre><code>export AIGHT_API_KEY="sk-aight-..."</code></pre>
+
+            <p class="code-label">curl</p>
+<pre><code>curl https://api.getaight.ai/v1/chat/completions \
+  -H "Authorization: Bearer $AIGHT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "gpt-5.4-mini",
+       "messages": [{"role": "user", "content": "Say hello in Hindi."}]}'</code></pre>
+
+            <p class="code-label">Python</p>
+<pre><code>import os
+from openai import OpenAI
+
+client = OpenAI(base_url="https://api.getaight.ai/v1",
+                api_key=os.environ["AIGHT_API_KEY"])
+reply = client.chat.completions.create(
+    model="gpt-5.4-mini",
+    messages=[{"role": "user", "content": "Say hello in Hindi."}],
+)
+print(reply.choices[0].message.content)</code></pre>
+
+            <p>
+              That is the whole change. If you already have working OpenAI code, set
+              <code>base_url</code> to <code>https://api.getaight.ai/v1</code> and
+              <code>api_key</code> to your Aight key, and run it.
+            </p>
+
+            <div class="example">
+              <p>
+                <strong>Keep the key out of your code.</strong> A key in a file that reaches GitHub is
+                a key somebody else is spending. Tell us the moment you think a key has leaked and we
+                freeze it.
+              </p>
+            </div>
+
+            <h2 id="key"><span class="num">03</span>Getting a key</h2>
+            <!-- SWAP POINT: the <p id="how-to-get-a-key"> below is the only place on this page that
+                 says how a key is obtained. Replacing that one paragraph is the whole change; no
+                 other sentence on this page depends on it. -->
+            <p id="how-to-get-a-key">
+              Two steps, and the first one is self-serve.
+            </p>
+            <ol>
+              <li>
+                <strong>Create an account</strong> at
+                <a href="https://console.getaight.ai">console.getaight.ai</a>. It asks for your work
+                email, your business name, your state and your GSTIN. We approve new accounts within
+                24 hours, weekends included. Nothing can be spent before that.
+              </li>
+              <li>
+                <strong>We issue the key.</strong> Keys are still made by hand: once your account is
+                approved and your first top-up is credited, email
+                <a href="mailto:hello@getaight.ai">hello@getaight.ai</a> with one line about what you
+                are building, and we reply within 24 hours with your key and the models it can call.
+                Making and revoking keys from the console yourself is not built yet.
+              </li>
+            </ol>
+
+            <h2 id="rules"><span class="num">04</span>Two rules before your first call</h2>
+            <p>
+              Neither of these is a surprise later. They decide whether your key works at all, so
+              they are here and not in the small print.
+            </p>
+            <ul>
+              <li>
+                <strong>We approve every new account before it can pay.</strong> Approval happens
+                within 24 hours of your email, weekends included. Until then the key does not work.
+              </li>
+              <li>
+                <strong>You pay in rupees before you use anything.</strong> Your key works while the
+                balance lasts and stops the moment it runs out. There is no card on file, no monthly
+                bill and no debt.
+              </li>
+            </ul>
+            <p>
+              The full set — minimum top-up <span class="money">₹500</span>, no expiry on your
+              balance, unused balance refunded within 7 working days, one GST invoice per top-up —
+              is the eight pricing rules on the home page.
+              <a href="/index.html#pricing">Read the pricing rules</a> before you email us.
+              Models are priced in dollars, so your balance is held in dollars and each top-up
+              converts at that day's rate, printed on the invoice.
+            </p>
+            <div class="example">
+              <p>
+                <strong>A worked number, so nobody has to guess.</strong> Pay by UPI or bank transfer
+                and a <span class="money">₹10,000</span> top-up costs you
+                <span class="money">₹11,800</span>: <span class="money">₹10,000</span> of credit plus
+                18% GST. The invoice is domestic, in your own business name and GSTIN, so your
+                finance team can claim the GST back.
+              </p>
+            </div>
+
+            <h2 id="errors"><span class="num">05</span>When a call fails</h2>
+            <p>
+              <strong>Write your software to branch on the HTTP status.</strong> The status is the
+              part that does not move. The English sentence in the body is for a human reading a log:
+              we may improve its words at any time, so do not match on them.
+            </p>
+            <p>
+              Where a refusal is ours rather than the model provider's, the error body also carries a
+              short machine-readable name in its <code>param</code> field, listed in the Code column
+              below. Everything in this table is what the gateway returns today, not what it will
+              return one day.
+            </p>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">HTTP</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">What happened</th>
+                    <th scope="col">What to do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="http">401</td>
+                    <td class="mono">&mdash;</td>
+                    <td>You sent no key, or a key we do not recognise.</td>
+                    <td>Check the <code>Authorization: Bearer</code> header carries your Aight key, whole and unquoted. Keys start with <code>sk-aight-</code>. No key yet? Section 03 above.</td>
+                  </tr>
+                  <tr>
+                    <td class="http">402</td>
+                    <td class="mono">out_of_balance</td>
+                    <td>Your balance is finished. Every request is refused until we credit your next top-up. The body reads: <em>&ldquo;Out of balance. Top up at console.getaight.ai. Do not retry this request automatically; it will fail until you top up.&rdquo;</em></td>
+                    <td>Top up. Do not retry automatically &mdash; it will keep failing until the money lands. Already paid? Reply to your last email with the UTR.</td>
+                  </tr>
+                  <tr>
+                    <td class="http">403</td>
+                    <td class="mono">key_cap_reached</td>
+                    <td>This one key has spent its own cap. Your account balance may be untouched; the cap is a limit you or we set on the key. The body names the cap in dollars.</td>
+                    <td>Use another key, or write to us to raise the cap. Do not retry: it will refuse until the cap moves.</td>
+                  </tr>
+                  <tr>
+                    <td class="http">403</td>
+                    <td class="mono">&mdash;</td>
+                    <td>Your key is not allowed to do this. Most often the model you named is not on your key's list.</td>
+                    <td>Call <code>GET /v1/models</code> and use a name from that list, or write to us and we add the model to your key.</td>
+                  </tr>
+                  <tr>
+                    <td class="http">429</td>
+                    <td class="mono">&mdash;</td>
+                    <td>You sent more requests in one minute than your key allows. A 429 is never about money.</td>
+                    <td>Wait the number of seconds in the <code>Retry-After</code> header, then send it again. Write to us if you need a higher limit.</td>
+                  </tr>
+                  <tr>
+                    <td class="http">503</td>
+                    <td class="mono">balance_unverifiable</td>
+                    <td>We could not check your balance, so we refused the request rather than guess. It was not run and you were not charged.</td>
+                    <td>Try again in a few seconds.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="example">
+              <p>
+                <strong>Never retry a 402 automatically.</strong> A money refusal always arrives as a
+                <code>402</code> and never as a <code>429</code>, so your retry logic can tell the two
+                apart. A 429 means slow down and try again. A 402 means stop and top up: a retry loop
+                on a 402 only burns your own machine.
+              </p>
+            </div>
+
+            <p>
+              <code>403</code> also covers a key you have frozen, a key past its expiry date, and an
+              account we have put on hold. The sentence in the body says which one it is, and names
+              the number or the date.
+            </p>
+
+            <h2 id="help"><span class="num">06</span>When something breaks</h2>
+            <p>
+              Write to <a href="mailto:hello@getaight.ai">hello@getaight.ai</a>. We read that
+              inbox from <strong>9 am to 9 pm IST, seven days a week</strong>. A founder replies —
+              not a ticket queue.
+            </p>
+            <p>Three things in the email get you an answer in one reply instead of three.</p>
+            <ul>
+              <li>The HTTP status and the sentence from the error body, copied exactly.</li>
+              <li>The date and time of the failed request, with the time zone.</li>
+              <li>The model name you asked for.</li>
+            </ul>
+            <p>
+              That is enough for us to find the request in the log. Never send us the key itself. If
+              you think a key has leaked, say so in the first line and we freeze it before we read
+              the rest.
+            </p>
+
+            <h2 id="legal"><span class="num">07</span>The small print</h2>
+            <p>
+              Three pages, in the same plain English as this one. Read them before you pay, not after.
+            </p>
+            <address>
+              <div class="row"><span class="lbl">Terms</span><span><a href="/legal/terms.html">Terms and Conditions</a> — what you buy, our liability, acceptable use</span></div>
+              <div class="row"><span class="lbl">Privacy</span><span><a href="/legal/privacy.html">Privacy Policy</a> — what we store about your requests, and for how long</span></div>
+              <div class="row"><span class="lbl">Refunds</span><span><a href="/legal/refunds.html">Refund and Cancellation Policy</a> — unused balance back within 7 working days</span></div>
+              <div class="row"><span class="lbl">Entity</span><span>Ashva Intelligence Pvt Ltd</span></div>
+              <div class="row"><span class="lbl">CIN</span><span class="mono">U62099HR2026PTC147038</span></div>
+              <div class="row"><span class="lbl">GSTIN</span><span class="mono">06ABFCA9973K1Z2</span></div>
+            </address>
+
+            <nav class="legal-siblings" aria-label="Other pages">
+              <span class="mono">See also</span>
+              <a href="/index.html#pricing">Pricing rules</a>
+              <a href="/legal/terms.html">Terms</a>
+              <a href="/legal/privacy.html">Privacy</a>
+              <a href="/legal/refunds.html">Refunds &amp; cancellations</a>
+              <a href="/index.html#talk">Contact us</a>
+            </nav>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="foot-top">
+          <div>
+            <a class="wordmark wordmark-inverse" href="/index.html" aria-label="Aight — home">Aight<span class="stop">.</span></a>
+            <p class="foot-identity">Where Indian businesses buy AI.</p>
+          </div>
+          <nav class="foot-links" aria-label="Footer">
+            <a href="/index.html#pricing">Prices</a>
+            <a href="/index.html#in-production">Customers</a>
+            <a href="/index.html#talk">Talk to us</a>
+            <a href="https://console.getaight.ai/signin">Sign in</a>
+            <a href="https://console.getaight.ai">Create an account</a>
+            <a href="/legal/privacy.html">Privacy</a>
+            <a href="/legal/terms.html">Terms</a>
+            <a href="/legal/refunds.html">Refunds &amp; cancellations</a>
+          </nav>
+        </div>
+        <div class="foot-meta mono">
+          <span><a href="mailto:hello@getaight.ai">hello@getaight.ai</a></span>
+          <span>&copy; 2026 Aight</span>
+        </div>
+        <div class="compliance mono" aria-label="Company registration details">
+          <div class="comp-row"><span class="comp-label">Entity</span><span>Ashva Intelligence Pvt Ltd</span></div>
+          <div class="comp-row"><span class="comp-label">CIN</span><span>U62099HR2026PTC147038</span></div>
+          <div class="comp-row"><span class="comp-label">GSTIN</span><span>06ABFCA9973K1Z2</span></div>
+          <div class="comp-row"><span class="comp-label">Registered office</span><span>683, Basai Road, Near Mother Dairy, Basai, Gurugram, Haryana 122001</span></div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const header = document.querySelector("[data-header]");
+      const setHeaderState = () => header && header.classList.toggle("is-scrolled", window.scrollY > 8);
+      setHeaderState();
+      window.addEventListener("scroll", setHeaderState, { passive: true });
+      const toggle = document.querySelector("[data-nav-toggle]");
+      toggle?.addEventListener("click", () => {
+        const open = header.classList.toggle("nav-open");
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+    </script>
+  </body>
+</html>
