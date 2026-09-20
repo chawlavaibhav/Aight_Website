@@ -142,7 +142,7 @@ table.t th{font-size:12px;font-weight:600;line-height:1;color:var(--ink-soft);te
 table.t td{padding:14px 16px 14px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
 table.t td.model{font-weight:600}
 table.t td.model a{font-weight:600}
-table.t td .pv{color:var(--ink-soft);font-size:13px;display:block;margin-top:2px;font-family:var(--sans);font-weight:400}
+table.t td .pv{color:var(--ink-soft);font-size:13px;margin-top:2px;font-family:var(--sans);font-weight:400}
 table.t td.money{font-family:var(--mono);font-size:14px;white-space:nowrap}
 table.t tr:last-child td{border-bottom:0}
 .tabs{display:flex;gap:24px;margin:32px 0 24px;border-bottom:1px solid var(--hairline);flex-wrap:wrap}
@@ -241,3 +241,4 @@ pre.code{margin:0;padding:16px;background:var(--raised);border:1px solid var(--h
   .tabs{gap:16px}
   .banner .wrap{align-items:flex-start}
 }
+.kv code{color:var(--ink)}

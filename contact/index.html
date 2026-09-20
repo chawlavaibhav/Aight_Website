@@ -19,12 +19,51 @@
 <meta name="twitter:description" content="A specific use case, more capacity, or a custom deployment.">
 <meta name="twitter:image" content="https://getaight.ai/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23141F31'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' font-weight='600' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/fonts.css">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<div class="banner"><a href="/credits/">Use AI. Earn more AI. <strong>Get 10% more in credits.</strong> →</a><button class="dismiss" data-action="dismiss" aria-label="Dismiss announcement">×</button></div><header class="nav"><a class="logo" href="/">Aight.</a><div class="navlinks"><a class="link navextra " href="/models/">Models</a><a class="link navextra " href="/discover/">Discover</a><a class="link navextra " href="/enterprise/">Enterprise</a><a class="link navextra " href="/docs/">Docs</a></div><div class="authlinks"><a class="link" href="https://console.getaight.ai/signin">Sign in</a><a class="a-btn small primary" href="https://console.getaight.ai/">Sign up</a><button class="a-btn small menuToggle" data-action="menu" aria-label="Toggle navigation">Menu</button></div></header>
-<main class="page"><div class="eyebrow">Let’s build something useful</div><div class="viewtitle"><div><h1>Tell us what you have in mind.</h1><p>A specific use case, more capacity, or a custom deployment.</p></div></div><div class="two"><form data-form="contact"><label class="field">Work email<input type="email" name="work-email" placeholder="you@company.com" value="" autocomplete="email"></label><label class="field">Company<input type="text" name="company" placeholder="Your company" value="" ></label><label class="field">What brings you here?<select name="topic"><option>Custom use case</option><option>Higher token limits / capacity</option><option>India hosting</option><option>Enterprise pricing</option><option>Partnership / perks</option></select></label><label class="field">What are you building?<textarea name="message" placeholder="Your use case, expected volume, timeline and any deployment requirements"></textarea></label><button class="a-btn primary" type="submit">Talk to us →</button><div id="a-message" aria-live="polite"></div></form><div class="panel soft"><h3>A useful first conversation.</h3><p>We’ll discuss what success looks like, suitable models, capacity, hosting and how to get started.</p><div class="section"><h3>Already using Aight?</h3><p>For billing and technical issues, contact support.</p><div class="actions"><a class="a-btn" href="/support/">Contact support</a></div></div></div></div></main>
-<footer class="footer"><div class="col brandcol"><a class="logo" href="/">Aight.</a><span class="muted">Use AI. Earn more AI.</span></div><div class="col"><strong>Product</strong><a class="link" href="/models/">Models</a><a class="link" href="/discover/">Discover</a><a class="link" href="/enterprise/">Enterprise</a><a class="link" href="https://console.getaight.ai/">Console</a></div><div class="col"><strong>Resources</strong><a class="link" href="/docs/">Docs</a><a class="link" href="/docs/reference/">API reference</a><a class="link" href="/status/">Service status</a><a class="link" href="/support/">Support</a></div><div class="col"><strong>Company</strong><a class="link" href="/support/">Contact</a><a class="link" href="/legal/terms.html">Terms</a><a class="link" href="/legal/privacy.html">Privacy</a><a class="link" href="/legal/refunds.html">Refund policy</a></div><div class="legal">© Aight · Ashva Intelligence Pvt Ltd</div></footer>
+<div class="banner"><div class="wrap"><a href="/credits/">Use AI. Earn more AI. <strong>Get 10% more in credits.</strong> →</a><button class="dismiss" data-action="dismiss" aria-label="Dismiss announcement">×</button></div></div>
+<header class="wrap top nav"><a class="wordmark" href="/">Aight<span class="stop">.</span></a><nav class="navlinks"><a class="navextra" href="/models/">Models</a><a class="navextra" href="/discover/">Discover</a><a class="navextra" href="/enterprise/">Enterprise</a><a class="navextra" href="/docs/">Docs</a></nav><div class="right"><a class="link sm" href="https://console.getaight.ai/signin">Sign in</a><a class="btn sm" href="https://console.getaight.ai/">Sign up</a><button class="btn sm quiet menu" data-action="menu" aria-label="Toggle navigation">Menu</button></div></header>
+<main>
+<section class="wrap hero short">
+<div class="eyebrow">Let’s build something useful</div>
+<h1 class="h1 wide">Tell us what you have in mind.</h1>
+<p class="lead mt24">A specific use case, more capacity, or a custom deployment.</p>
+</section>
+<section class="wrap sec">
+<div class="grid">
+<div class="c5">
+<form class="form" data-form="contact">
+<label for="c-email">Work email</label><input id="c-email" type="email" name="work-email" placeholder="you@company.com" value="" autocomplete="email">
+<label for="c-company">Company</label><input id="c-company" type="text" name="company" placeholder="Your company" value="">
+<label for="c-topic">What brings you here?</label><select id="c-topic" name="topic"><option>Custom use case</option><option>Higher token limits / capacity</option><option>India hosting</option><option>Enterprise pricing</option><option>Partnership / perks</option></select>
+<label for="c-message">What are you building?</label><textarea id="c-message" name="message" placeholder="Your use case, expected volume, timeline and any deployment requirements"></textarea>
+<button class="btn" type="submit">Talk to us →</button>
+<div id="a-message" aria-live="polite"></div>
+</form>
+</div>
+<div class="s8 ruled">
+<h3 class="h3 mb8">A useful first conversation.</h3>
+<p class="small">We’ll discuss what success looks like, suitable models, capacity, hosting and how to get started.</p>
+<div class="ruled mt32" style="border-color:var(--hairline)">
+<h3 class="h3 mb8">Already using Aight?</h3>
+<p class="small">For billing and technical issues, contact support.</p>
+<div class="actions mt16"><a class="btn quiet" href="/support/">Contact support</a></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="wrap foot">
+<div class="cols4">
+<div class="col"><a class="wordmark" href="/">Aight<span class="stop">.</span></a><div class="tag">Use AI. Earn more AI.</div></div>
+<div class="col"><div class="label">Product</div><a href="/models/">Models</a><a href="/discover/">Discover</a><a href="/enterprise/">Enterprise</a><a href="https://console.getaight.ai/">Console</a></div>
+<div class="col"><div class="label">Resources</div><a href="/docs/">Docs</a><a href="/docs/reference/">API reference</a><a href="/status/">Service status</a><a href="/support/">Support</a></div>
+<div class="col"><div class="label">Company</div><a href="/support/">Contact</a><a href="/legal/terms.html">Terms</a><a href="/legal/privacy.html">Privacy</a><a href="/legal/refunds.html">Refund policy</a></div>
+</div>
+<div class="entity"><span>© Aight · Ashva Intelligence Pvt Ltd</span></div>
+</footer>
 <script src="/assets/site.js"></script>
 </body>
 </html>
