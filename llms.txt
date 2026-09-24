@@ -1,0 +1,24 @@
+# Aight
+
+> Aight is an OpenAI-compatible API for 102 AI models — text, voice and image —
+> from OpenAI, Google, Amazon, NVIDIA, Mistral and others, through one API key.
+> Billed in USD. Usage earns 10% back in credits. Higher token limits and India
+> hosting options are available for supported workloads. Built and operated by
+> Ashva Intelligence Pvt Ltd.
+
+## Docs
+- [Quickstart](https://getaight.ai/docs/): first request, authentication, base URL
+- [API reference](https://getaight.ai/docs/reference/): endpoints and parameters
+- [The Aight API](https://getaight.ai/api/): address, curl and Python examples, error codes
+
+## Models and pricing
+- [Model catalogue](https://getaight.ai/models/): 102 models with input/output prices per 1M tokens
+
+## Rewards
+- [Credits back](https://getaight.ai/credits/): 10% back in credits on AI usage
+
+## Company
+- [Enterprise](https://getaight.ai/enterprise/): higher capacity, India hosting, custom deployment
+- [Contact](https://getaight.ai/contact/)
+- [Support](https://getaight.ai/support/)
+- [Status](https://getaight.ai/status/)
