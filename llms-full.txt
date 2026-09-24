@@ -1,0 +1,320 @@
+# Aight — full reference text
+
+Generated from the live site content (docs + model catalogue).
+
+
+## Docs — Quickstart (https://getaight.ai/docs/)
+
+Documentation
+Quickstart API reference Authentication Models Credits & billing Get help
+Build your first request.
+Your path from a new account to a working integration.
+Create and verify your account Complete account approval before funding. Sign up →
+Add credits Add purchased credits. Earn rewards when you use AI. Top up →
+Create an API key Keep your key private and store it securely. Create key →
+client = OpenAI(
+api_key="YOUR_API_KEY",
+base_url="https://api.getaight.ai/v1"
+)
+response = client.chat.completions.create(
+model="MODEL_ID",
+messages=[{"role": "user", "content": "Hello!"}]
+)
+Aight is OpenAI-compatible: the official OpenAI SDK works by pointing base_url at Aight.
+API reference →
+
+
+## API reference (https://getaight.ai/docs/reference/)
+
+Documentation
+Quickstart API reference Authentication Models Credits & billing Get help
+API reference
+Request structure, authentication and errors.
+POST /chat/completions
+Authentication
+Send your API key as a bearer token.
+Authorization: Bearer YOUR_API_KEY
+Request body
+model string · required
+messages array · required
+stream boolean · optional
+Response states
+200 · Success 401 · Invalid credentials 429 · Rate limit reached 5xx · Service error
+
+
+## The Aight API (https://getaight.ai/api/)
+
+API / Start here
+The Aight API
+Last updated 15 September 2026
+Ashva Intelligence Pvt Ltd
+This is the address your software talks to. This page is the whole of it: where to
+point your code, how to get a key, what you pay, and what every error means. If you have
+written code against OpenAI before, your first call is about five minutes away.
+The short version
+Address
+https://api.getaight.ai/v1
+Shape
+OpenAI-compatible. Change the base address and the key in your existing code. Nothing else.
+Key
+Create an account at console.getaight.ai , then we issue the key. We approve new accounts within 24 hours, weekends included.
+Payment
+Prepaid in rupees. Minimum top-up ₹500 . No card on file, no monthly bill.
+Money refusal
+Always a 402 , never a 429 . A 402 means stop and top up, not retry.
+Help
+hello@getaight.ai , 9 am to 9 pm IST, seven days a week. A founder replies.
+01 The address
+Send your requests here. This is the only address you need.
+Base address
+https://api.getaight.ai/v1
+The Aight API is OpenAI-compatible . That means it speaks the same
+language as OpenAI's own API: the same paths, the same request shape, the same reply
+shape. So any tool that already talks to OpenAI talks to us after you change two
+things — the base address and the key. The official OpenAI libraries for Python and
+Node, LangChain, LlamaIndex, Cursor, and plain curl all work this way.
+These are the paths open to you today.
+Path
+What it does
+POST /v1/chat/completions
+Send messages to a model and read its reply. This is the one almost everybody uses.
+POST /v1/embeddings
+Turn text into numbers for search and matching.
+GET /v1/models
+List the models your key is allowed to call. Send your key with it.
+cohere-command-a , deepseek-r1 , DeepSeek-V3.2 , deepseek-v3.2-aws , DeepSeek-V3.2-Speciale , DeepSeek-V4-Flash , DeepSeek-V4-Pro , devstral-2-123b , FLUX-1.1-pro , FLUX.1-Kontext-pro , gemini-2.5-flash , gemini-2.5-pro , gemini-3.1-flash-image , gemini-3.1-flash-lite , gemini-3.1-pro-preview , gemini-3.5-flash , gemini-3.5-flash-lite , gemini-embedding-001 , gemma-3-12b , gemma-3-27b , gemma-3-4b , gpt-4.1 , gpt-4.1-mini , gpt-4.1-nano , gpt-4o , gpt-4o-mini-transcribe , gpt-4o-transcribe-diarize , gpt-5 , gpt-5-codex , gpt-5-mini , gpt-5-nano , gpt-5-pro , gpt-5.1 , gpt-5.1-codex , gpt-5.1-codex-max , gpt-5.1-codex-mini , gpt-5.2 , gpt-5.2-codex , gpt-5.3-codex , gpt-5.4 , gpt-5.4-mini , gpt-5.4-nano , gpt-5.4-pro , gpt-5.5 , gpt-5.6-luna , gpt-5.6-sol , gpt-5.6-terra , gpt-6-astra , gpt-audio , gpt-audio-1.5 , gpt-audio-mini , gpt-image-1-mini , gpt-image-1.5 , gpt-image-2 , gpt-image-2.5-flare , gpt-image-2.5-sunburst , gpt-oss-120b , gpt-oss-120b-aws , gpt-oss-20b , grok-4-1-fast-non-reasoning , grok-4-1-fast-reasoning , grok-4.3 , grok-4.6 , grok-code-fast-1 , kimi-k2-thinking , Kimi-K2.5 , kimi-k2.5-aws , Kimi-K2.6 , kimi-k3 , llama-3.1-70b , llama-3.1-8b , llama-3.3-70b , Llama-3.3-70B-Instruct , llama-4-maverick-17b , Llama-4-Maverick-17B-128E-Instruct-FP8 , llama-4-scout-17b , magistral-small-2509 , minimax-m2 , minimax-m2.1 , minimax-m2.5 , ministral-3-14b , ministral-3-3b , ministral-3-8b , Mistral-Large-3 , mistral-large-3-aws , mistral-medium-3-5 , nemotron-nano-12b-v2 , nemotron-nano-3-30b , nemotron-nano-9b-v2 , nemotron-super-3-120b , nova-2-lite , nova-lite , nova-micro , nova-pro , pixtral-large-2502 , qwen3-32b , qwen3-coder-30b-a3b , qwen3-coder-next , qwen3-next-80b-a3b , qwen3-vl-235b-a22b , text-embedding-3-large and text-embedding-3-small .
+02 Your first call
+Both examples below do the same thing: send one sentence to a model and print the
+reply. Both read the key from an environment variable instead of hard-coding it in the
+text — that's how to keep it out of your code. Put your key there first — every Aight key
+starts with sk-aight- :
+export AIGHT_API_KEY="sk-aight-..."
+curl
+curl https://api.getaight.ai/v1/chat/completions \
+-H "Authorization: Bearer $AIGHT_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{"model": "gpt-5.4-mini",
+"messages": [{"role": "user", "content": "Say hello in Hindi."}]}'
+Python
+import os
+from openai import OpenAI
+client = OpenAI(base_url="https://api.getaight.ai/v1",
+api_key=os.environ["AIGHT_API_KEY"])
+reply = client.chat.completions.create(
+model="gpt-5.4-mini",
+messages=[{"role": "user", "content": "Say hello in Hindi."}],
+)
+print(reply.choices[0].message.content)
+That is the whole change. If you already have working OpenAI code, set
+base_url to https://api.getaight.ai/v1 and
+api_key to your Aight key, and run it.
+Keep the key out of your code. A key in a file that reaches GitHub is
+a key somebody else is spending. Tell us the moment you think a key has leaked and we
+freeze it.
+03 Getting a key
+below is the only place on this page that
+says how a key is obtained. Replacing that one paragraph is the whole change; no
+other sentence on this page depends on it. -->
+Two steps, and the first one is self-serve.
+Create an account at
+console.getaight.ai . It asks for your work
+email, your business name, your state and your GSTIN. We approve new accounts within
+24 hours, weekends included. Nothing can be spent before that.
+We issue the key. Keys are still made by hand: once your account is
+approved and your first top-up is credited, email
+hello@getaight.ai with one line about what you
+are building, and we reply within 24 hours with your key and the models it can call.
+Making and revoking keys from the console yourself is not built yet.
+04 Two rules before your first call
+Neither of these is a surprise later. They decide whether your key works at all, so
+they are here and not in the small print.
+We approve every new account before it can pay. Approval happens
+within 24 hours of your email, weekends included. Until then the key does not work.
+You pay in rupees before you use anything. Your key works while the
+balance lasts and stops the moment it runs out. There is no card on file, no monthly
+bill and no debt.
+That's four of the eight pricing rules — minimum top-up ₹500 ,
+no expiry on your balance, unused balance refunded within 7 working days, one GST
+invoice per top-up.
+Read all eight before you email us.
+Models are priced in dollars, so your balance is held in dollars and each top-up
+converts at that day's rate, printed on the invoice.
+A worked number, so nobody has to guess. Pay by UPI or bank transfer
+and a ₹10,000 top-up costs you
+₹11,800 : ₹10,000 of credit plus
+18% GST. The invoice is domestic, in your own business name and GSTIN, so your
+finance team can claim the GST back.
+05 When a call fails
+Write your software to branch on the HTTP status. The status is the
+part that does not move. The English sentence in the body is for a human reading a log:
+we may improve its words at any time, so do not match on them.
+Where a refusal is ours rather than the model provider's, the error body also carries a
+short machine-readable name in its param field, listed in the Code column
+below. Everything in this table is what the gateway returns today, not what it will
+return one day.
+HTTP
+Code
+What happened
+What to do
+401
+—
+You sent no key, or a key we do not recognise.
+Check the Authorization: Bearer header carries your Aight key, whole and unquoted. Keys start with sk-aight- . No key yet? Section 03 above.
+402
+out_of_balance
+Your balance is finished. Every request is refused until we credit your next top-up. The body reads: “Out of balance. Top up at console.getaight.ai. Do not retry this request automatically; it will fail until you top up.”
+Top up. Do not retry automatically — it will keep failing until the money lands. Already paid? Reply to your last email with the UTR.
+403
+key_cap_reached
+This one key has spent its own cap. Your account balance may be untouched; the cap is a limit you or we set on the key. The body names the cap in dollars.
+Use another key, or write to us to raise the cap. Do not retry: it will refuse until the cap moves.
+403
+—
+Your key is not allowed to do this. Most often the model you named is not on your key's list.
+Call GET /v1/models and use a name from that list, or write to us and we add the model to your key.
+429
+—
+You sent more requests in one minute than your key allows. A 429 is never about money.
+Wait the number of seconds in the Retry-After header, then send it again. Write to us if you need a higher limit.
+503
+balance_unverifiable
+We could not check your balance, so we refused the request rather than guess. It was not run and you were not charged.
+Try again in a few seconds.
+Never retry a 402 automatically. A money refusal always arrives as a
+402 and never as a 429 , so your retry logic can tell the two
+apart. A 429 means slow down and try again. A 402 means stop and top up: a retry loop
+on a 402 only burns your own machine.
+403 also covers a key you have frozen, a key past its expiry date, and an
+account we have put on hold. The sentence in the body says which one it is, and names
+the number or the date.
+06 When something breaks
+Write to hello@getaight.ai . We read that
+inbox from 9 am to 9 pm IST, seven days a week . A founder replies —
+not a ticket queue.
+Three things in the email get you an answer in one reply instead of three.
+The HTTP status and the sentence from the error body, copied exactly.
+The date and time of the failed request, with the time zone.
+The model name you asked for.
+That is enough for us to find the request in the log. Never send us the key itself. If
+you think a key has leaked, say so in the first line and we freeze it before we read
+the rest.
+07 The small print
+Three pages, in the same plain English as this one. Read them before you pay, not after.
+Terms Terms and Conditions — what you buy, our liability, acceptable use
+Privacy Privacy Policy — what we store about your requests, and for how long
+Refunds Refund and Cancellation Policy — unused balance back within 7 working days
+Entity Ashva Intelligence Pvt Ltd
+CIN U62099HR2026PTC147038
+GSTIN 06ABFCA9973K1Z2
+See also
+Pricing rules
+Terms
+Privacy
+Refunds & cancellations
+Contact us
+
+
+## Model catalogue (https://getaight.ai/models/) — 102 models
+
+- nova-micro Amazon · AWS Bedrock | United States | Text $0.035 input · $0.14 output US$ per 1M tokens | Short text-only replies and classification on a tight budget
+- gemma-3-4b Google · AWS Bedrock | United States | Text $0.04 input · $0.08 output US$ per 1M tokens | Google's Gemma 3 4B open model, text and image input
+- gpt-5-nano OpenAI · Azure | Global | Text $0.05 input · $0.40 output US$ per 1M tokens | General production workloads
+- nemotron-nano-3-30b AWS Bedrock · AWS Bedrock | United States | Text $0.06 input · $0.24 output US$ per 1M tokens | NVIDIA's 30B sparse model with a 256K context
+- nemotron-nano-9b-v2 AWS Bedrock · AWS Bedrock | United States | Text $0.06 input · $0.23 output US$ per 1M tokens | NVIDIA's 9B model for cheap high-volume text tasks
+- nova-lite Amazon · AWS Bedrock | United States | Text $0.06 input · $0.24 output US$ per 1M tokens | Understands text, images and video at a low price per call
+- gpt-oss-20b OpenAI · AWS Bedrock | United States | Text $0.07 input · $0.30 output US$ per 1M tokens | OpenAI's open-weight 20B model for low-cost reasoning
+- gemma-3-12b Google · AWS Bedrock | United States | Text $0.09 input · $0.29 output US$ per 1M tokens | Google's Gemma 3 12B open model, text and image input
+- gpt-4.1-nano OpenAI · Azure | Global | Text $0.10 input · $0.40 output US$ per 1M tokens | General production workloads
+- ministral-3-3b AWS Bedrock · AWS Bedrock | United States | Text $0.10 input · $0.10 output US$ per 1M tokens | Mistral's 3B model for low-cost, high-volume text calls
+- qwen3-next-80b-a3b Alibaba · AWS Bedrock | United States | Text $0.14 input · $1.20 output US$ per 1M tokens | Qwen3 Next 80B sparse model for general chat
+- gpt-oss-120b OpenAI · Azure | Global | Text $0.15 input · $0.60 output US$ per 1M tokens | Open-weight reasoning experiments
+- gpt-oss-120b-aws OpenAI · AWS Bedrock | United States | Text $0.15 input · $0.60 output US$ per 1M tokens | OpenAI's open-weight 120B model hosted by AWS
+- ministral-3-8b AWS Bedrock · AWS Bedrock | United States | Text $0.15 input · $0.15 output US$ per 1M tokens | Mistral's 8B small model for routine text tasks
+- nemotron-super-3-120b AWS Bedrock · AWS Bedrock | United States | Text $0.15 input · $0.65 output US$ per 1M tokens | NVIDIA's 120B model for reasoning and agents
+- qwen3-32b Alibaba · AWS Bedrock | United States | Text $0.15 input · $0.60 output US$ per 1M tokens | Qwen3 32B dense model for general chat and code
+- qwen3-coder-30b-a3b Alibaba · AWS Bedrock | United States | Text $0.15 input · $0.60 output US$ per 1M tokens | Qwen3 Coder 30B for code completion at low cost
+- llama-4-scout-17b Meta · AWS Bedrock | United States | Text $0.17 input · $0.66 output US$ per 1M tokens | Llama 4 Scout: long-context chat with image input
+- DeepSeek-V4-Flash DeepSeek · Azure | Global | Text $0.19 input · $0.51 output US$ per 1M tokens | Lighter technical responses than DeepSeek-V4-Pro
+- gpt-5.4-nano OpenAI · Azure | Global | Text $0.20 input · $1.25 output US$ per 1M tokens | General production workloads
+- gpt-5.6-luna OpenAI · Azure | Global | Text $0.20 input · $1.20 output US$ per 1M tokens, up to 272K tokens $0.40 input · $1.80 output above 272K tokens | General production workloads
+- grok-4-1-fast-non-reasoning xAI · Azure | Global | Text $0.20 input · $0.50 output US$ per 1M tokens | Everyday chat
+- grok-4-1-fast-reasoning xAI · Azure | Global | Text $0.20 input · $0.50 output US$ per 1M tokens | Reasoning calls
+- grok-code-fast-1 xAI · Azure | Global | Text $0.20 input · $1.50 output US$ per 1M tokens | Quick coding assistance
+- ministral-3-14b AWS Bedrock · AWS Bedrock | United States | Text $0.20 input · $0.20 output US$ per 1M tokens | Mistral's 14B small model for cost-sensitive chat
+- nemotron-nano-12b-v2 AWS Bedrock · AWS Bedrock | United States | Text $0.20 input · $0.60 output US$ per 1M tokens | NVIDIA's 12B vision-language model
+- llama-3.1-8b Meta · AWS Bedrock | United States | Text $0.22 input · $0.22 output US$ per 1M tokens | Small Llama for cheap high-volume text tasks
+- gemma-3-27b Google · AWS Bedrock | United States | Text $0.23 input · $0.38 output US$ per 1M tokens | Google's Gemma 3 27B open model, text and image input
+- llama-4-maverick-17b Meta · AWS Bedrock | United States | Text $0.24 input · $0.97 output US$ per 1M tokens | Llama 4 Maverick: larger mixture-of-experts chat with image input
+- gemini-3.1-flash-lite Google · Vertex AI | Global | Text $0.25 input · $1.50 output US$ per 1M tokens | Current Gemini production calls
+- gpt-5-mini OpenAI · Azure | Global | Text $0.25 input · $2.00 output US$ per 1M tokens | Everyday work at a low price
+- gpt-5.1-codex-mini OpenAI · Azure | Global | Text $0.25 input · $2.00 output US$ per 1M tokens | General production workloads
+- Llama-4-Maverick-17B-128E-Instruct-FP8 Meta · Azure | Global | Text $0.25 input · $1.00 output US$ per 1M tokens | Multimodal chat
+- gemini-2.5-flash Google · Vertex AI Retires 20 October 2026 | Global | Text $0.30 input · $2.50 output US$ per 1M tokens | High volume, and the cheapest Gemini on the list — retires 2026-10-20, move to gemini-3.5-flash
+- gemini-3.5-flash-lite Google · Vertex AI | Global | Text $0.30 input · $2.50 output US$ per 1M tokens | Current Gemini production calls
+- minimax-m2 MiniMax · AWS Bedrock | United States | Text $0.30 input · $1.20 output US$ per 1M tokens | MiniMax M2 for coding and agent workflows
+- minimax-m2.1 MiniMax · AWS Bedrock | United States | Text $0.30 input · $1.20 output US$ per 1M tokens | MiniMax M2.1, the M2 line with a longer context
+- minimax-m2.5 MiniMax · AWS Bedrock | United States | Text $0.30 input · $1.20 output US$ per 1M tokens | MiniMax M2.5 with a one-million-token context
+- nova-2-lite Amazon · AWS Bedrock | United States | Text $0.33 input · $2.75 output US$ per 1M tokens | Amazon's current lite model; reasoning, text, image and video input
+- devstral-2-123b AWS Bedrock · AWS Bedrock | United States | Text $0.40 input · $2.00 output US$ per 1M tokens | Mistral's coding model for agentic software tasks
+- gpt-4.1-mini OpenAI · Azure | Global | Text $0.40 input · $1.60 output US$ per 1M tokens | Older, still supported, very large context window
+- magistral-small-2509 AWS Bedrock · AWS Bedrock | United States | Text $0.50 input · $1.50 output US$ per 1M tokens | Mistral's small reasoning model
+- Mistral-Large-3 Mistral AI · Azure | Global | Text $0.50 input · $1.50 output US$ per 1M tokens | General multilingual work
+- mistral-large-3-aws Mistral AI · AWS Bedrock | United States | Text $0.50 input · $1.50 output US$ per 1M tokens | Mistral Large 3 hosted by AWS in the United States
+- qwen3-coder-next Alibaba · AWS Bedrock | United States | Text $0.50 input · $1.20 output US$ per 1M tokens | Qwen3 Coder Next for agentic coding
+- qwen3-vl-235b-a22b Alibaba · AWS Bedrock | United States | Text $0.53 input · $2.66 output US$ per 1M tokens | Qwen3 VL 235B for image and document understanding
+- DeepSeek-V3.2 DeepSeek · Azure | Global | Text $0.58 input · $1.68 output US$ per 1M tokens | Complex coding and analysis
+- DeepSeek-V3.2-Speciale DeepSeek · Azure | Global | Text $0.58 input · $1.68 output US$ per 1M tokens | Reasoning-heavy technical work
+- kimi-k2-thinking Moonshot AI · AWS Bedrock | United States | Text $0.60 input · $2.50 output US$ per 1M tokens | Kimi K2 with extended thinking for multi-step reasoning
+- Kimi-K2.5 Moonshot AI · Azure | Global | Text $0.60 input · $3.00 output US$ per 1M tokens | Long reasoning and coding
+- kimi-k2.5-aws Moonshot AI · AWS Bedrock | United States | Text $0.60 input · $3.00 output US$ per 1M tokens | Kimi K2.5 hosted by AWS in the United States
+- deepseek-v3.2-aws DeepSeek · AWS Bedrock | United States | Text $0.62 input · $1.85 output US$ per 1M tokens | DeepSeek V3.2 hosted by AWS in the United States
+- Llama-3.3-70B-Instruct Meta · Azure | Global | Text $0.71 input · $0.71 output US$ per 1M tokens | Open-weight chat workloads
+- llama-3.1-70b Meta · AWS Bedrock | United States | Text $0.72 input · $0.72 output US$ per 1M tokens | Older Llama 3.1 70B, for teams pinned to it
+- llama-3.3-70b Meta · AWS Bedrock | United States | Text $0.72 input · $0.72 output US$ per 1M tokens | Meta's 70B open model for general chat
+- nova-pro Amazon · AWS Bedrock | United States | Text $0.80 input · $3.20 output US$ per 1M tokens | Amazon's larger model for text, image and video tasks
+- gpt-5.4-mini OpenAI · Azure | South Asia data zone | Text $0.90 input · $5.40 output US$ per 1M tokens | The newest small model, and the only one processed in the South Asia data zone
+- Kimi-K2.6 Moonshot AI · Azure | Global | Text $0.95 input · $4.00 output US$ per 1M tokens | Agentic coding and reasoning
+- gemini-2.5-pro Google · Vertex AI Retires 20 October 2026 | Global | Text $1.25 input · $10.00 output US$ per 1M tokens, up to 200K tokens $2.50 input · $15.00 output above 200K tokens | The hardest reasoning — retires 2026-10-20, move to gemini-3.1-pro-preview
+- gpt-5 OpenAI · Azure | Global | Text $1.25 input · $10.00 output US$ per 1M tokens | General production workloads
+- gpt-5-codex OpenAI · Azure | Global | Text $1.25 input · $10.00 output US$ per 1M tokens | General production workloads
+- gpt-5.1 OpenAI · Azure | Global | Text $1.25 input · $10.00 output US$ per 1M tokens | General production workloads
+- gpt-5.1-codex OpenAI · Azure | Global | Text $1.25 input · $10.00 output US$ per 1M tokens | General production workloads
+- gpt-5.1-codex-max OpenAI · Azure | Global | Text $1.25 input · $10.00 output US$ per 1M tokens | General production workloads
+- grok-4.3 xAI · Azure | Global | Text $1.25 input · $2.50 output US$ per 1M tokens, up to 128K tokens $2.50 input · $5.00 output above 128K tokens | Concise reasoning and drafting
+- deepseek-r1 DeepSeek · AWS Bedrock | United States | Text $1.35 input · $5.40 output US$ per 1M tokens | DeepSeek R1 reasoning model hosted by AWS
+- gemini-3.5-flash Google · Vertex AI | Global | Text $1.50 input · $9.00 output US$ per 1M tokens | High volume, and what replaces gemini-2.5-flash on 20 October
+- mistral-medium-3-5 Mistral AI · Azure | Global | Text $1.50 input · $7.50 output US$ per 1M tokens | Balanced enterprise tasks
+- DeepSeek-V4-Pro DeepSeek · Azure | Global | Text $1.74 input · $3.48 output US$ per 1M tokens | Deeper technical reasoning
+- gpt-5.2 OpenAI · Azure | Global | Text $1.75 input · $14.00 output US$ per 1M tokens | General production workloads
+- gpt-5.2-codex OpenAI · Azure | Global | Text $1.75 input · $14.00 output US$ per 1M tokens | General production workloads
+- gpt-5.3-codex OpenAI · Azure | Global | Text $1.75 input · $14.00 output US$ per 1M tokens | General production workloads
+- gemini-3.1-pro-preview Google · Vertex AI | Global | Text $2.00 input · $12.00 output US$ per 1M tokens, up to 200K tokens $4.00 input · $18.00 output above 200K tokens | The hardest reasoning, and what replaces gemini-2.5-pro on 20 October
+- gpt-4.1 OpenAI · Azure | Global | Text $2.00 input · $8.00 output US$ per 1M tokens | General production workloads
+- gpt-5.6-terra OpenAI · Azure | Global | Text $2.00 input · $12.00 output US$ per 1M tokens, up to 272K tokens $4.00 input · $18.00 output above 272K tokens | General production workloads
+- grok-4.6 xAI · Azure | Global | Text $2.00 input · $6.00 output US$ per 1M tokens, up to 128K tokens $4.00 input · $12.00 output above 128K tokens | Current-events style reasoning
+- pixtral-large-2502 AWS Bedrock · AWS Bedrock | United States | Text $2.00 input · $6.00 output US$ per 1M tokens | Mistral's large vision model for documents and images
+- cohere-command-a Cohere · Azure | Global | Text $2.50 input · $10.00 output US$ per 1M tokens | Enterprise writing and analysis
+- gpt-4o OpenAI · Azure | Global | Text $2.50 input · $10.00 output US$ per 1M tokens | General production workloads
+- gpt-5.4 OpenAI · Azure | Global | Text $2.50 input · $15.00 output US$ per 1M tokens, up to 272K tokens $5.00 input · $22.50 output above 272K tokens | General production workloads
+- kimi-k3 Moonshot AI · AWS Bedrock | United States | Text $3.30 input · $16.50 output US$ per 1M tokens | Moonshot's Kimi K3 for long reasoning and agent runs
+- gpt-5.6-sol OpenAI · Azure | Global | Text $4.00 input · $20.00 output US$ per 1M tokens, up to 272K tokens $8.00 input · $30.00 output above 272K tokens | General production workloads
+- gpt-5.5 OpenAI · Azure | Global | Text $5.00 input · $30.00 output US$ per 1M tokens, up to 272K tokens $10.00 input · $45.00 output above 272K tokens | General production workloads
+- gpt-6-astra OpenAI · Azure | Global | Text $10.00 input · $50.00 output US$ per 1M tokens, up to 272K tokens $20.00 input · $75.00 output above 272K tokens | General production workloads
+- gpt-5-pro OpenAI · Azure | Global | Text $15.00 input · $120.00 output US$ per 1M tokens | General production workloads
+- gpt-5.4-pro OpenAI · Azure | Global | Text $30.00 input · $180.00 output US$ per 1M tokens, up to 272K tokens $60.00 input · $270.00 output above 272K tokens | General production workloads
+- text-embedding-3-small OpenAI · Azure | Global | Text $0.02 input · output n/a US$ per 1M tokens | Search and matching
+- text-embedding-3-large OpenAI · Azure | Global | Text $0.13 input · output n/a US$ per 1M tokens | Larger search embeddings
+- gemini-embedding-001 Google · Vertex AI | Global | Text $0.15 input · output n/a US$ per 1M tokens | Current Gemini production calls
+- gpt-audio-mini OpenAI · Azure | United States | Voice $0.60 input · $2.40 output US$ per 1M tokens $10.00 audio input · $20.00 audio output US$ per 1M audio tokens | The cheapest speak-and-listen chat model, billed by the audio token
+- gpt-4o-mini-transcribe OpenAI · Azure | Global | Voice $3.00 audio input · $5.00 output US$ per 1M tokens $1.25 text-prompt input US$ per 1M tokens | Turns recorded speech into text, billed by the audio token
+- gpt-4o-transcribe-diarize OpenAI · Azure | Global | Voice $6.00 audio input · $10.00 output US$ per 1M tokens $2.50 text-prompt input US$ per 1M tokens | Turns a recording into text and says who spoke when
+- gpt-audio OpenAI · Azure | United States | Voice $2.50 input · $10.00 output US$ per 1M tokens $40.00 audio input · $80.00 audio output US$ per 1M audio tokens | Speaks and listens in one chat call, billed by the audio token
+- gpt-audio-1.5 OpenAI · Azure | United States | Voice $2.50 input · $10.00 output US$ per 1M tokens $32.00 audio input · $64.00 audio output US$ per 1M audio tokens | The current speak-and-listen chat model, billed by the audio token
+- FLUX-1.1-pro Black Forest Labs · Azure | Global | Image $0.04 US$ per image | Black Forest Labs' FLUX 1.1 Pro, one picture at one price
+- FLUX.1-Kontext-pro Black Forest Labs · Azure | Global | Image $0.04 US$ per image | Black Forest Labs' Kontext Pro, a picture from a text prompt
+- gemini-3.1-flash-image Google · Vertex AI | Global | Image $0.50 input · $3.00 output US$ per 1M tokens $60.00 per 1M image tokens the picture itself | The cheapest picture on the list, billed as image tokens
+- gpt-image-1-mini OpenAI · Azure | United States | Image $2.00 input US$ per 1M tokens $8.00 per 1M image tokens the picture itself $2.50 per 1M image tokens a reference picture sent in | The cheapest OpenAI picture, billed by the image token
+- gpt-image-1.5 OpenAI · Azure Retires 16 December 2026 | United States | Image $5.00 input · $10.00 output US$ per 1M tokens $32.00 per 1M image tokens the picture itself $8.00 per 1M image tokens a reference picture sent in | OpenAI's picture model with text output tokens, billed by the token
+- gpt-image-2 OpenAI · Azure | United States | Image $5.00 input · $10.00 output US$ per 1M tokens $30.00 per 1M image tokens the picture itself $8.00 per 1M image tokens a reference picture sent in | OpenAI's flagship picture model, billed by the image token
+- gpt-image-2.5-flare OpenAI · Azure | United States | Image $5.00 input US$ per 1M tokens $30.00 per 1M image tokens the picture itself $8.00 per 1M image tokens a reference picture sent in | OpenAI's newest picture model (flare style), billed by the image token
+- gpt-image-2.5-sunburst OpenAI · Azure | United States | Image $5.00 input US$ per 1M tokens $30.00 per 1M image tokens the picture itself $8.00 per 1M image tokens a reference picture sent in | OpenAI's newest picture model (sunburst style), billed by the image token
