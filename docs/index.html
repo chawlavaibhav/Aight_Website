@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aight — Docs / quickstart</title>
+<title>Aight API Quickstart — OpenAI-Compatible Gateway</title>
 <link rel="canonical" href="https://getaight.ai/docs/">
-<meta name="description" content="Your path from a new account to a working integration.">
+<meta name="description" content="Make your first request in minutes: create a key, then point the OpenAI SDK's base_url at Aight. One key for 102 models.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aight">
-<meta property="og:title" content="Aight — Docs / quickstart">
-<meta property="og:description" content="Your path from a new account to a working integration.">
+<meta property="og:title" content="Aight API Quickstart — OpenAI-Compatible Gateway">
+<meta property="og:description" content="Make your first request in minutes: create a key, then point the OpenAI SDK's base_url at Aight. One key for 102 models.">
 <meta property="og:url" content="https://getaight.ai/docs/">
 <meta property="og:image" content="https://getaight.ai/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Aight — Docs / quickstart">
-<meta name="twitter:description" content="Your path from a new account to a working integration.">
+<meta name="twitter:title" content="Aight API Quickstart — OpenAI-Compatible Gateway">
+<meta name="twitter:description" content="Make your first request in minutes: create a key, then point the OpenAI SDK's base_url at Aight. One key for 102 models.">
 <meta name="twitter:image" content="https://getaight.ai/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%23141F31'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' font-weight='600' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/assets/fonts.css">
@@ -30,7 +30,7 @@
 <div class="grid">
 <aside class="c3">
 <div class="label mb16">Documentation</div>
-<ul class="docnav"><li class="on"><a href="/docs/">Quickstart</a></li><li><a href="/docs/reference/">API reference</a></li><li><a href="/docs/reference/">Authentication</a></li><li><a href="/models/">Models</a></li><li><a href="/credits/">Credits &amp; billing</a></li><li><a href="/support/">Get help</a></li></ul>
+<ul class="docnav"><li class="on"><a href="/docs/">Quickstart</a></li><li><a href="/docs/reference/">API reference</a></li><li><a href="/docs/reference/#authentication">Authentication</a></li><li><a href="/models/">Models</a></li><li><a href="/credits/">Credits &amp; billing</a></li><li><a href="/support/">Get help</a></li></ul>
 </aside>
 <article class="s5">
 <h1 class="h1 docs">Build your first request.</h1>
@@ -41,14 +41,14 @@
 <li><div><div class="t"><h3>Create an API key</h3></div><div class="d"><p>Keep your key private and store it securely.</p></div><p class="mt8"><a class="link sm" href="https://console.getaight.ai/">Create key →</a></p></div></li>
 </ol>
 <pre class="code mt32">client = OpenAI(
-    api_key="YOUR_AIGHT_API_KEY",
-    base_url="YOUR_AIGHT_BASE_URL"
+    api_key="YOUR_API_KEY",
+    base_url="https://api.getaight.ai/v1"
 )
 response = client.chat.completions.create(
     model="MODEL_ID",
     messages=[{"role": "user", "content": "Hello!"}]
 )</pre>
-<p class="small mt12">Example layout. Confirm SDK compatibility and endpoint details before publishing.</p>
+<p class="small mt12">Aight is OpenAI-compatible: the official OpenAI SDK works by pointing <code>base_url</code> at Aight.</p>
 <div class="actions mt24"><a class="btn quiet" href="/docs/reference/">API reference →</a></div>
 </article>
 </div>
